@@ -1,12 +1,44 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Navegacao } from './src/screens/navegacao';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import {  useFonts,
+  Exo2_400Regular,
+  Exo2_600SemiBold,
+  Exo2_700Bold, } from '@expo-google-fonts/exo-2';
+  import { Login } from './src/screens/login';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const[fontsLoaded, fontsError] = useFonts({
+    Exo2_400Regular,
+    Exo2_600SemiBold,
+    Exo2_700Bold,
+  })
+
+  if (!fontsLoaded && !fontsError) {
+    return null;
+  }
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Navegacao"
+          component={Navegacao}
+          options={{title: "Navegação"}}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{title: "Login"}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
