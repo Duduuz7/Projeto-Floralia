@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Navegacao } from './src/screens/navegacao';
+import { Navegacao } from './src/screens/navegacao/navegacao';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import {  useFonts,
   Exo2_400Regular,
   Exo2_600SemiBold,
   Exo2_700Bold, } from '@expo-google-fonts/exo-2';
-  import { Login } from './src/screens/login';
+  import { Login } from './src/screens/login/login';
 
 const Stack = createNativeStackNavigator();
 
