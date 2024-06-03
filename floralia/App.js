@@ -8,6 +8,7 @@ import {  useFonts,
   Exo2_600SemiBold,
   Exo2_700Bold, } from '@expo-google-fonts/exo-2';
   import { Login } from './src/screens/login/login';
+import { Profile } from './src/screens/profile/profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,11 @@ export default function App() {
           name="Login"
           component={Login}
           options={{title: "Login"}}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{title: "Profile"}}
         />
       </Stack.Navigator>
     </NavigationContainer>
