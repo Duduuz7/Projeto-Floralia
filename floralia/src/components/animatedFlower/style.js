@@ -7,8 +7,10 @@ export const AnimatedStyle = styled(LottieView).attrs({
   autoPlay: true,
   loop: true,
 })`
-  width: 77px;
-  height: 75px;
+  width: 165px;
+  height: 163px;
+  align-self: center;
+  justify-self: center;
 `;
 
 export const ContainerLottieStyle = styled.View`

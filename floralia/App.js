@@ -3,17 +3,20 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Navegacao } from './src/screens/navegacao/navegacao';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {  useFonts,
+import {
+  useFonts,
   Exo2_400Regular,
   Exo2_600SemiBold,
-  Exo2_700Bold, } from '@expo-google-fonts/exo-2';
-  import { Login } from './src/screens/login/login';
+  Exo2_700Bold,
+} from '@expo-google-fonts/exo-2';
+import { Login } from './src/screens/login/login';
+import Splash from './src/screens/splash/splash';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-  const[fontsLoaded, fontsError] = useFonts({
+  const [fontsLoaded, fontsError] = useFonts({
     Exo2_400Regular,
     Exo2_600SemiBold,
     Exo2_700Bold,
@@ -27,16 +30,25 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{ title: "Splash" }}
+        />
+
         <Stack.Screen
           name="Navegacao"
           component={Navegacao}
-          options={{title: "Navegação"}}
+          options={{ title: "Navegação" }}
         />
+
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{title: "Login"}}
+          options={{ title: "Login" }}
         />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,7 +1,7 @@
 import { AnimatedStyle, ContainerLottieStyle } from "./style"
 
 
-export const animatedFlower = () => {
+export const AnimatedFlower = () => {
     return (
       <ContainerLottieStyle>
         <AnimatedStyle/>
