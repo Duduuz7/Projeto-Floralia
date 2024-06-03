@@ -6,3 +6,7 @@ export const Container = styled.SafeAreaView`
     background-color: #fafafa;
     gap: 5px;
 `
+
+export const ContainerSpace = styled.View`
+    
+`

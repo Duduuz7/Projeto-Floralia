@@ -3,11 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Navegacao } from './src/screens/navegacao/navegacao';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import {  useFonts,
-  Exo2_400Regular,
-  Exo2_600SemiBold,
-  Exo2_700Bold, } from '@expo-google-fonts/exo-2';
-  import { Login } from './src/screens/login/login';
+import { Login } from './src/screens/login/login';
+import { recuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
+import {  useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
+import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,8 +14,13 @@ export default function App() {
 
   const[fontsLoaded, fontsError] = useFonts({
     Exo2_400Regular,
+    Exo2_500Medium,
     Exo2_600SemiBold,
     Exo2_700Bold,
+    Quicksand_400Regular, 
+    Quicksand_500Medium, 
+    Quicksand_600SemiBold, 
+    Quicksand_700Bold 
   })
 
   if (!fontsLoaded && !fontsError) {
@@ -36,6 +40,11 @@ export default function App() {
           name="Login"
           component={Login}
           options={{title: "Login"}}
+        />
+        <Stack.Screen
+          name="recuperarSenha"
+          component={recuperarSenha}
+          options={{title: "RecuperarSenha"}}
         />
       </Stack.Navigator>
     </NavigationContainer>
