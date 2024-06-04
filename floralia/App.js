@@ -7,10 +7,16 @@ import {
   useFonts,
   Exo2_400Regular,
   Exo2_600SemiBold,
+<<<<<<< HEAD
   Exo2_700Bold,
 } from '@expo-google-fonts/exo-2';
 import { Login } from './src/screens/login/login';
 import Splash from './src/screens/splash/splash';
+=======
+  Exo2_700Bold, } from '@expo-google-fonts/exo-2';
+  import { Login } from './src/screens/login/login';
+import { Profile } from './src/screens/profile/profile';
+>>>>>>> origin/cat
 
 const Stack = createNativeStackNavigator();
 
@@ -48,7 +54,15 @@ export default function App() {
           component={Login}
           options={{ title: "Login" }}
         />
+<<<<<<< HEAD
 
+=======
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{title: "Profile"}}
+        />
+>>>>>>> origin/cat
       </Stack.Navigator>
     </NavigationContainer>
   );
