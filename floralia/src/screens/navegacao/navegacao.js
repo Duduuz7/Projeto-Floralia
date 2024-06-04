@@ -8,16 +8,13 @@ export const Navegacao = ({navigation}) => {
                 onPress={() => navigation.navigate("Login")}
             />
             <Button
-<<<<<<< HEAD
                 title="Profile"
                 onPress={() => navigation.navigate("Profile")}
             />
-            
-=======
+            <Button
                 title="RecuperarSenha"
                 onPress={() => navigation.navigate("recuperarSenha")}
             />
->>>>>>> origin/gui
            
         </View>
     )
