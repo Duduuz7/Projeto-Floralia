@@ -6,6 +6,7 @@ export const InputLinhaVerde = styled.TextInput.attrs({
     width: 90%;
     height: 51px;
     padding: 16px;
+    padding-right: 40px;
     margin-top: 15px;
     background-color: "F6F6F6";
 
@@ -15,5 +16,5 @@ export const InputLinhaVerde = styled.TextInput.attrs({
 
     font-size: 14px;
     font-family: "Exo2_600SemiBold";
-    color: "386E17";
+    color: #386E17;
 `

@@ -3,27 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Navegacao } from './src/screens/navegacao/navegacao';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-<<<<<<< HEAD
-import {
-  useFonts,
-  Exo2_400Regular,
-  Exo2_600SemiBold,
-<<<<<<< HEAD
-  Exo2_700Bold,
-} from '@expo-google-fonts/exo-2';
-import { Login } from './src/screens/login/login';
-import Splash from './src/screens/splash/splash';
-=======
-  Exo2_700Bold, } from '@expo-google-fonts/exo-2';
-  import { Login } from './src/screens/login/login';
-import { Profile } from './src/screens/profile/profile';
->>>>>>> origin/cat
-=======
 import { Login } from './src/screens/login/login';
 import { recuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
 import {  useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
->>>>>>> origin/gui
+import { atualizarSenha } from './src/screens/atualizarSenha/atualizarSenha';
+import Splash from './src/screens/splash/splash';
+import { Profile } from './src/screens/profile/profile';
+import { cadastro } from './src/screens/cadastro/cadastro';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -66,23 +54,29 @@ export default function App() {
           component={Login}
           options={{ title: "Login" }}
         />
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
         <Stack.Screen
           name="Profile"
           component={Profile}
           options={{title: "Profile"}}
         />
->>>>>>> origin/cat
-=======
+
         <Stack.Screen
           name="recuperarSenha"
           component={recuperarSenha}
           options={{title: "RecuperarSenha"}}
         />
->>>>>>> origin/gui
+        <Stack.Screen
+          name="atualizarSenha"
+          component={atualizarSenha}
+          options={{title: "AtualizarSenha"}}
+        />
+        <Stack.Screen
+          name="cadastro"
+          component={cadastro}
+          options={{title: "Cadastro"}}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

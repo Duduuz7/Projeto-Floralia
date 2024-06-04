@@ -1,41 +1,104 @@
-import { TouchableOpacity } from "react-native"
-import { Container } from "../../components/container/style"
-import { InputLinhaVerde } from "../../components/input/style"
-import { LinkRosa, TextInputVerde, TextVerde } from "../../components/text/style"
-import { TitleVerde } from "../../components/title/style"
-import { ButtonVerde } from "../../components/button/style"
-import { TextButtonVerde } from "../../components/textbutton/style"
-import { Logo } from "../../components/images/style"
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Container } from "../../components/container/style";
+import { InputLinhaVerde } from "../../components/input/style";
+import {
+  LinkRosa,
+  TextInputVerde,
+  TextVerde,
+} from "../../components/text/style";
+import { TitleVerde } from "../../components/title/style";
+import { ButtonVerde } from "../../components/button/style";
+import { TextButtonVerde } from "../../components/textbutton/style";
+import { Logo } from "../../components/images/style";
+import {
+  ViewInputIcon,
+  ViewLeft,
+  ViewLinha,
+  ViewSpaceBottom,
+  ViewSpaceTop,
+} from "../../components/views/style";
+import { useState } from "react";
+import Feather from "@expo/vector-icons/Feather";
+{
+  /* <Feather name="eye" size={24} color="black" /> */
+}
+{
+  /* <Feather name="eye-off" size={24} color="black" /> */
+}
 
 export const Login = () => {
-    return(
-        <Container>
-            <Logo
-                source={require('../../assets/img/logoFloralia.svg')}
-            />
-            <TitleVerde>Login</TitleVerde>
-            <InputLinhaVerde>
-                <TextInputVerde>E-mail</TextInputVerde>
-            </InputLinhaVerde>
-            <InputLinhaVerde>
-                <TextInputVerde>Senha</TextInputVerde>
-            </InputLinhaVerde>
+  const [email, setEmail] = useState("");
 
-            <TouchableOpacity>
+  const handleEmail = () => {
+    setEmail("");
+  };
 
-            <LinkRosa>Esqueceu sua senha?</LinkRosa>
+  const handleChangeEmail = (newText) => {
+    setEmail(newText);
+  };
 
-            </TouchableOpacity>
-            <ButtonVerde>
-                <TextButtonVerde>ENTRAR</TextButtonVerde>
-            </ButtonVerde>
+  const [senha, setSenha] = useState("");
 
-            <TextVerde>É novo aqui? <TouchableOpacity>
-                <LinkRosa>Crie sua conta agora!</LinkRosa>
-                </TouchableOpacity>
-                </TextVerde>
+  const handleSenha = () => {
+    setSenha("");
+  };
 
-            
-        </Container>
-    )
-}
+  const handleChangeSenha = (newText) => {
+    setSenha(newText);
+  };
+
+  return (
+    <Container>
+      <ViewSpaceTop></ViewSpaceTop>
+
+      <Logo source={require("../../assets/img/logoFloralia.png")} />
+
+      <TitleVerde>Login</TitleVerde>
+
+      <ViewInputIcon>
+        <InputLinhaVerde
+          value={email}
+          onFocus={handleEmail}
+          onChangeText={handleChangeEmail}
+          placeholder="Email"
+        />
+        <Feather name="eye" size={24} color="black" style={styles.icon}/>
+      </ViewInputIcon>
+
+      <InputLinhaVerde
+        value={senha}
+        onFocus={handleSenha}
+        onChangeText={handleChangeSenha}
+        placeholder="Senha"
+      />
+
+      <ViewLeft>
+        <TouchableOpacity>
+          <LinkRosa>Esqueceu sua senha?</LinkRosa>
+        </TouchableOpacity>
+      </ViewLeft>
+      <ButtonVerde>
+        <TextButtonVerde>ENTRAR</TextButtonVerde>
+      </ButtonVerde>
+
+      <ViewSpaceBottom></ViewSpaceBottom>
+
+      <ViewLinha>
+        <TextVerde>
+          É novo aqui?{" "}
+          <TouchableOpacity>
+            <LinkRosa>Crie sua conta agora!</LinkRosa>
+          </TouchableOpacity>
+        </TextVerde>
+      </ViewLinha>
+    </Container>
+  );
+};
+
+const styles = StyleSheet.create({
+    icon: {
+      position: 'absolute',
+      right: 10,
+    },
+  });
+  
