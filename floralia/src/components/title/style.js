@@ -5,10 +5,5 @@ export const TitleVerde = styled.Text`
     font-family: 'Exo2_600SemiBold';
     font-size: 20px;
     flex-direction: "start";
-<<<<<<< HEAD
-`
-
-=======
     margin-top: 20px;
 `
->>>>>>> origin/gui
