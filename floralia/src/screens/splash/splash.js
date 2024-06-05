@@ -13,7 +13,7 @@ export default function Splash({ navigation }) {
         index: 0,
         routes: [{ name: 'Navegacao' }]
       }))
-    }, 100000);
+    }, 1000);
   })
 
   return (
