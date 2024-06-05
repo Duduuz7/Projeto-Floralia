@@ -55,15 +55,14 @@ export const Login = () => {
 
       <TitleVerde>Login</TitleVerde>
 
-      <ViewInputIcon>
+      
         <InputLinhaVerde
           value={email}
           onFocus={handleEmail}
           onChangeText={handleChangeEmail}
           placeholder="Email"
         />
-        <Feather name="eye" size={24} color="black" style={styles.icon}/>
-      </ViewInputIcon>
+       
 
       <InputLinhaVerde
         value={senha}
