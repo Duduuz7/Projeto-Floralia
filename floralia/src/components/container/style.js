@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.SafeAreaView`
+<<<<<<< HEAD
   flex: 1;
   align-items: center;
   background-color: #fafafa;
@@ -46,4 +47,10 @@ export const BackgroundIcon = styled.SafeAreaView`
   align-items: center;
   border-radius: 70px;
   justify-content: center;
+=======
+    flex: 1;
+    align-items: center;
+    background-color: #fafafa;
+    gap: 5px;
+>>>>>>> origin/gui
 `

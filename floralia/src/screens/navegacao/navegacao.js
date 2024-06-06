@@ -24,8 +24,17 @@ export const Navegacao = ({navigation}) => {
                 onPress={() => navigation.navigate("recuperarSenha")}
             />
             <Button
+<<<<<<< HEAD
                 title="CodigoRecuperarSenha"
                 onPress={() => navigation.navigate("codigoRecuperarSenha")}
+=======
+                title="AtualizarSenha"
+                onPress={() => navigation.navigate("atualizarSenha")}
+            />
+            <Button
+                title="Cadastro"
+                onPress={() => navigation.navigate("cadastro")}
+>>>>>>> origin/gui
             />
            
         </View>
