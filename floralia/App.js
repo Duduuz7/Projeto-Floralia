@@ -3,26 +3,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Navegacao } from './src/screens/navegacao/navegacao';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-<<<<<<< HEAD
 import Splash from './src/screens/splash/splash';
 import { Profile } from './src/screens/profile/profile';
-=======
->>>>>>> origin/gui
 import { Login } from './src/screens/login/login';
 import { recuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
 import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
-<<<<<<< HEAD
 import { Favoritos } from './src/screens/favoritos/favoritos';
 import { Carrinho } from './src/screens/carrinho/carrinho';
 import { CodigoRecuperarSenha } from './src/screens/codigoRecuperarSenha/codigoRecuperarSenha';
-=======
 import { atualizarSenha } from './src/screens/atualizarSenha/atualizarSenha';
-import Splash from './src/screens/splash/splash';
-import { Profile } from './src/screens/profile/profile';
 import { cadastro } from './src/screens/cadastro/cadastro';
 
->>>>>>> origin/gui
 
 const Stack = createNativeStackNavigator();
 
@@ -75,7 +67,6 @@ export default function App() {
           options={{ title: "Profile" }}
         />
 
-<<<<<<< HEAD
         <Stack.Screen
           name="Favoritos"
           component={Favoritos}
@@ -88,14 +79,11 @@ export default function App() {
           options={{ title: "Carrinho" }}
         />
 
-=======
->>>>>>> origin/gui
         <Stack.Screen
           name="recuperarSenha"
           component={recuperarSenha}
           options={{ title: "RecuperarSenha" }}
         />
-<<<<<<< HEAD
 
         <Stack.Screen
           name="codigoRecuperarSenha"
@@ -103,9 +91,6 @@ export default function App() {
           options={{ title: "CodigoRecuperarSenha" }}
         />
 
-      </Stack.Navigator >
-    </NavigationContainer >
-=======
         <Stack.Screen
           name="atualizarSenha"
           component={atualizarSenha}
@@ -119,7 +104,6 @@ export default function App() {
 
       </Stack.Navigator>
     </NavigationContainer>
->>>>>>> origin/gui
   );
 }
 

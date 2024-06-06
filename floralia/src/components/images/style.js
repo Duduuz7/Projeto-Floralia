@@ -3,9 +3,31 @@ import styled from "styled-components";
 export const Logo = styled.Image`
     width: 260px;
     height: 90px;
-    margin-top: 55%;
+    margin-top: 50%;
     margin-bottom: 2px;
 `
+
+export const LogoAtualizar = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 30%;
+    margin-bottom: 2px;
+`
+
+export const LogoRecuperar = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 35%;
+    margin-bottom: 2px;
+`
+
+export const LogoCadastro = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 15%;
+    margin-bottom: 2px;
+`
+
 export const LogoHeader = styled.Image`
     width: 120px;
     height: 38px;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ButtonVerde } from "../../components/button/style";
 import { Container } from "../../components/container/style";
-import { Logo } from "../../components/images/style";
+import { Logo, LogoAtualizar } from "../../components/images/style";
 import { InputLinhaVerde } from "../../components/input/style";
 import {
   TextInputVerde,
@@ -39,7 +39,7 @@ export const atualizarSenha = () => {
 
       <ViewSpaceTop></ViewSpaceTop>
 
-      <Logo source={require("../../assets/img/logoFloralia.png")} />
+      <LogoAtualizar source={require("../../assets/img/logoFloralia.png")} />
 
       <TitleVerde>Atualizar senha</TitleVerde>
 

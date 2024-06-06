@@ -1,8 +1,8 @@
 import { View, Button } from "react-native"
 
-export const Navegacao = ({navigation}) => {
-    return(
-        <View style={{marginTop: 0}}>
+export const Navegacao = ({ navigation }) => {
+    return (
+        <View style={{ marginTop: 0 }}>
             <Button
                 title="Login"
                 onPress={() => navigation.navigate("Login")}
@@ -19,24 +19,24 @@ export const Navegacao = ({navigation}) => {
                 title="Carrinho"
                 onPress={() => navigation.navigate("Carrinho")}
             />
-             <Button
+            <Button
                 title="RecuperarSenha"
                 onPress={() => navigation.navigate("recuperarSenha")}
             />
             <Button
-<<<<<<< HEAD
                 title="CodigoRecuperarSenha"
                 onPress={() => navigation.navigate("codigoRecuperarSenha")}
-=======
+
+            />
+            <Button
                 title="AtualizarSenha"
                 onPress={() => navigation.navigate("atualizarSenha")}
             />
             <Button
                 title="Cadastro"
                 onPress={() => navigation.navigate("cadastro")}
->>>>>>> origin/gui
             />
-           
+
         </View>
     )
 }
