@@ -12,17 +12,17 @@ export const BoxCard = styled.SafeAreaView`
   width: 100%;
   height: 100%;
   align-items: flex-start;
-  border: 2px;
+  
 `
 
 export const CardTextContainer = styled.SafeAreaView`
   flex-direction: column;
   padding-right: 12px;
   width: 50%;
-  height: 80px;
   align-self: center;
   margin-left: 0px;
   gap: 3px;
+  align-items: center;
 `
 
 export const FlatContainer = styled.FlatList`
@@ -39,11 +39,10 @@ export const HrProfile = styled.SafeAreaView`
   margin-bottom:35px;
 `
 
-export const BackgroundIcon = styled.SafeAreaView`
-  width: 56px;
-  height: 56px;
-  background-color: #FFECF2;
-  align-items: center;
-  border-radius: 70px;
-  justify-content: center;
-`
+// export const CardContainerItem = styled.SafeAreaView`
+//   width: 240px;
+//   height: 108px;
+//   border: 2px;
+//   border-color: red;
+// `
+

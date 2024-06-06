@@ -2,20 +2,18 @@ import { View } from "react-native"
 import { Container, FlatContainer, HrProfile } from "../../components/container/style"
 import { Header } from "../../components/header/style"
 import { LogoHeader } from "../../components/images/style"
-import { TitleVerde } from "../../components/title/style"
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from "react"
-import { CardProduto } from "../../components/cards/cardFavoritos/cardFavoritos"
+import { CardPesquisa } from "../../components/cards/cardPesquisa/cardPesquisa"
 
+export const ResultadoPesquisa = ({ navigation }) => {
 
-export const Favoritos = ({ navigation }) => {
-
-    const [favoritos, setFavoritos] = useState([
-        { name: 'Buque de rosas', id: '1', status: 'Pendente', precoProduto: '389,90' },
-        { name: 'Buque de flores', id: '2', status: 'Recebido', precoProduto: '389,90' },
-        { name: 'Buque de lirios', id: '3', status: 'Cancelado', precoProduto: '389,90' },
-        { name: 'Buque de lirios', id: '4', status: 'pendente', precoProduto: '389,90' },
+    const [resultado, setResultado] = useState([
+        { name: 'Buque de rosas', id: '1', status: 'Pendente', precoProduto: '389,90', valor: '39,90' },
+        { name: 'Buque de flores', id: '2', status: 'Recebido', precoProduto: '389,90', valor: '39,90' },
+        { name: 'Buque de lirios', id: '3', status: 'Cancelado', precoProduto: '389,90', valor: '39,90' },
+        { name: 'Buque de lirios', id: '4', status: 'pendente', precoProduto: '389,90', valor: '39,90' },
     ]);
 
     return (
@@ -36,17 +34,18 @@ export const Favoritos = ({ navigation }) => {
 
             </Header>
 
-            <TitleVerde>Favoritos</TitleVerde>
+
 
             <FlatContainer
                 keyExtractor={(item) => item.id}
-                data={favoritos}
+                data={resultado}
                 renderItem={({ item }) => (
-                    <CardProduto
+                    <CardPesquisa
                         navigation={navigation}
                         name={item.name}
                         status={item.status}
                         precoProduto={item.precoProduto}
+                        valor={item.valor}
                     />
                 )}
             />

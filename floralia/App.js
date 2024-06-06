@@ -11,6 +11,7 @@ import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bo
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { Favoritos } from './src/screens/favoritos/favoritos';
 import { Carrinho } from './src/screens/carrinho/carrinho';
+import { ResultadoPesquisa } from './src/screens/resultadoPesquisa/resultadoPesquisa';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,25 +57,31 @@ export default function App() {
         <Stack.Screen
           name="Profile"
           component={Profile}
-          options={{title: "Profile"}}
+          options={{ title: "Profile" }}
         />
 
         <Stack.Screen
           name="Favoritos"
           component={Favoritos}
-          options={{title: "Favoritos"}}
+          options={{ title: "Favoritos" }}
         />
 
         <Stack.Screen
           name="Carrinho"
           component={Carrinho}
-          options={{title: "Carrinho"}}
+          options={{ title: "Carrinho" }}
         />
 
         <Stack.Screen
           name="recuperarSenha"
           component={recuperarSenha}
-          options={{title: "RecuperarSenha"}}
+          options={{ title: "RecuperarSenha" }}
+        />
+
+        <Stack.Screen
+          name="ResultadoPesquisa"
+          component={ResultadoPesquisa}
+          options={{ title: "ResultadoPesquisa" }}
         />
 
       </Stack.Navigator >

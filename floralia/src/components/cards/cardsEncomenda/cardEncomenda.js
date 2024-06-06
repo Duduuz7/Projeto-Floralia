@@ -7,7 +7,8 @@ import { CardData, CardName, CardStatus } from "../../title/style";
 export const Card = ({
 name,
 status,
-dataEncomenda
+precoProduto,
+dataEncomenda,
 }) => {
 
     return (

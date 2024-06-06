@@ -21,11 +21,19 @@ export const CardName = styled(TitleVerde)`
 export const CardStatus = styled(CardName)`
     color: #99004F;
     font-size: 16px;
-    margin-top: 0px
+    margin-top: 0px;
 `
 
 export const CardData = styled(CardName)`
-    color: #000000;
+    color: black;
     font-size: 16px;
-    margin-top: 0px
+    margin-top: 0px;
+`
+
+export const CardPreco = styled(CardName)`
+    color: #99004F;
+`
+
+export const CardDataBlack = styled(CardData)`
+    color: black;
 `

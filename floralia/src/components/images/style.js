@@ -28,8 +28,7 @@ export const CameraIcon = styled.Image`
 export const CardImage = styled.Image`
     width: 110px;
     height: 100%;
-    border-radius: 0px;
-    border-right: 1px;
+    border-right-width: 1px;
     border-color: #1C4B00;
     align-self: center;
     /* margin-top: 22px; */

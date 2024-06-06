@@ -12,3 +12,12 @@ export const ButtonVerde = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
 `
+
+export const BackgroundIcon = styled.TouchableOpacity`
+  width: 56px;
+  height: 56px;
+  background-color: #FFECF2;
+  align-items: center;
+  border-radius: 70px;
+  justify-content: center;
+`
