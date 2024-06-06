@@ -8,10 +8,10 @@ import { TextButtonVerde } from "../../components/textbutton/style"
 import { Logo } from "../../components/images/style"
 
 export const Login = () => {
-    return(
+    return (
         <Container>
             <Logo
-                source={require('../../assets/img/logoFloralia.svg')}
+                source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
             />
             <TitleVerde>Login</TitleVerde>
             <InputLinhaVerde>
@@ -23,7 +23,7 @@ export const Login = () => {
 
             <TouchableOpacity>
 
-            <LinkRosa>Esqueceu sua senha?</LinkRosa>
+                <LinkRosa>Esqueceu sua senha?</LinkRosa>
 
             </TouchableOpacity>
             <ButtonVerde>
@@ -31,11 +31,12 @@ export const Login = () => {
             </ButtonVerde>
 
             <TextVerde>É novo aqui? <TouchableOpacity>
-                <LinkRosa>Crie sua conta agora!</LinkRosa>
-                </TouchableOpacity>
-                </TextVerde>
 
-            
+                <LinkRosa>Crie sua conta agora!</LinkRosa>
+            </TouchableOpacity>
+            </TextVerde>
+
+
         </Container>
     )
 }

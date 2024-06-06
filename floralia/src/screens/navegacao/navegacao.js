@@ -2,7 +2,7 @@ import { View, Button } from "react-native"
 
 export const Navegacao = ({navigation}) => {
     return(
-        <View>
+        <View style={{marginTop: 0}}>
             <Button
                 title="Login"
                 onPress={() => navigation.navigate("Login")}
@@ -22,6 +22,10 @@ export const Navegacao = ({navigation}) => {
              <Button
                 title="RecuperarSenha"
                 onPress={() => navigation.navigate("recuperarSenha")}
+            />
+            <Button
+                title="CodigoRecuperarSenha"
+                onPress={() => navigation.navigate("codigoRecuperarSenha")}
             />
            
         </View>

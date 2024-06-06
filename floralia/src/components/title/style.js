@@ -5,7 +5,7 @@ export const TitleVerde = styled.Text`
     font-family: 'Exo2_600SemiBold';
     font-size: 20px;
     flex-direction: "start";
-    margin-top: 20px;
+    margin-top: 25px;
 `
 export const TitleVerdeProfile = styled(TitleVerde)`
  text-align: left;

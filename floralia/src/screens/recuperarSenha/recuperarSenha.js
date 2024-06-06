@@ -4,6 +4,7 @@ import { Logo } from "../../components/images/style";
 import { InputLinhaVerde } from "../../components/input/style";
 import {
     LinkRosa,
+  LinkRosaCod,
   TextInputVerde,
   TextoQuicksandMedium,
 } from "../../components/text/style";
@@ -17,7 +18,7 @@ export const recuperarSenha = () => {
       <TitleVerde>Recuperação de senha</TitleVerde>
 
       <TextoQuicksandMedium>
-        Digite abaixo seu email para receber o código de recuperação de senha !
+        Deigite abaixo seu email para receber o código de rcuperação de senha !
       </TextoQuicksandMedium>
 
       <InputLinhaVerde>
@@ -28,7 +29,7 @@ export const recuperarSenha = () => {
         <TextButtonVerde>CONTINUAR</TextButtonVerde>
       </ButtonVerde>
 
-      <LinkRosa>Cancelar</LinkRosa>
+      <LinkRosaCod>Cancelar</LinkRosaCod>
     </Container>
   );
 };

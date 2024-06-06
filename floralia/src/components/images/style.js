@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Logo = styled.Image`
-    width: 222px;
-    height: 78px;
+    width: 260px;
+    height: 90px;
+    margin-top: 55%;
+    margin-bottom: 2px;
 `
 export const LogoHeader = styled.Image`
     width: 120px;
