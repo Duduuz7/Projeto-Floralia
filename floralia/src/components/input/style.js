@@ -5,9 +5,9 @@ export const InputLinhaVerde = styled.TextInput.attrs({
 })`
     width: 90%;
     height: 51px;
-    padding: 16px;
+    /* padding: 16px; */
     margin-top: 15px;
-    background-color: "F6F6F6";
+    background-color: #F5F5F5;
 
     border-bottom-width: 2px;
     border-bottom-color: #386E17;
@@ -15,5 +15,10 @@ export const InputLinhaVerde = styled.TextInput.attrs({
 
     font-size: 14px;
     font-family: "Exo2_600SemiBold";
-    color: "386E17";
+    color: #386E17;
+`
+
+export const InputSearch = styled(InputLinhaVerde)`
+    align-items: center;
+    padding-left: 10px;
 `

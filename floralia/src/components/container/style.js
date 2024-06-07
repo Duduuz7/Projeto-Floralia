@@ -6,6 +6,35 @@ export const Container = styled.SafeAreaView`
   background-color: #fafafa;
   gap: 5px;
 `
+export const ContainerCardHome = styled.SafeAreaView`
+  align-items: center;
+  width: 95;
+  height: 125;
+  border: 2px;
+  border-radius: 4px;
+  border-color: #1C4B00;
+  margin: 8px;
+`
+export const ContainerDescription = styled.SafeAreaView`
+  align-items: center;
+  width: 100%;
+  border-top-width: 2px;
+  border-color: #1C4B00;
+`
+
+export const ContainerSearch = styled.View`
+  /* flex: 1; */
+  flex-direction: row;
+  align-items: center;
+
+`
+export const ContainerProduto = styled.View`
+  /* flex-direction: row; */
+  margin-top: 30px;
+  align-items: center;
+  width: 90%;
+  height: 75%;
+`
 
 export const BoxCard = styled.SafeAreaView`
   flex-direction: row;
@@ -30,6 +59,12 @@ export const FlatContainer = styled.FlatList`
   margin-bottom: 20px;
   padding-bottom: 60px;
 `
+export const FlatContainerHome = styled.FlatList`
+  /* align-items: center; */
+  flex-wrap: wrap;
+  padding: 10px;
+  height: 75%
+`
 
 export const HrProfile = styled.SafeAreaView`
   width: 90%;
@@ -47,3 +82,4 @@ export const BackgroundIcon = styled.SafeAreaView`
   border-radius: 70px;
   justify-content: center;
 `
+

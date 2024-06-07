@@ -4,6 +4,10 @@ export const Logo = styled.Image`
     width: 222px;
     height: 78px;
 `
+export const ImageProduct = styled.Image`
+    width: 80px;
+    height: 80px;
+`
 export const LogoHeader = styled.Image`
     width: 120px;
     height: 38px;

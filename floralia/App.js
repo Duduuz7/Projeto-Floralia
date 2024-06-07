@@ -11,6 +11,8 @@ import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bo
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { Favoritos } from './src/screens/favoritos/favoritos';
 import { Carrinho } from './src/screens/carrinho/carrinho';
+import { Home } from './src/screens/home/home';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -75,6 +77,12 @@ export default function App() {
           name="recuperarSenha"
           component={recuperarSenha}
           options={{title: "RecuperarSenha"}}
+        />
+
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{title: "Home"}}
         />
 
       </Stack.Navigator >
