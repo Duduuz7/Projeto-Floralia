@@ -1,8 +1,9 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { Container } from "../../components/container/style";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Container, ViewNovoAqui } from "../../components/container/style";
 import { InputLinhaVerde } from "../../components/input/style";
 import {
   LinkRosa,
+  LinkRosaConta,
   TextInputVerde,
   TextVerde,
 } from "../../components/text/style";
@@ -20,34 +21,39 @@ import {
 } from "../../components/views/style";
 
 import { useState } from "react";
-import Feather from "@expo/vector-icons/Feather";
 
-{
-  /* <Feather name="eye" size={24} color="black" /> */
-}
-{
-  /* <Feather name="eye-off" size={24} color="black" /> */
-}
+
+
+import { InputLinha, InputLinhaSenha } from "../../components/inputFunction/inputFunction";
+
 
 export const Login = () => {
 
+<<<<<<< HEAD
   const [email, setEmail] = useState("email@email.com");
   const [senha, setSenha] = useState("12345");
+=======
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [secure, setSecure] = useState(true);
+
+>>>>>>> origin/edu
 
   const handleEmail = () => {
     setEmail("");
   };
 
-  const handleChangeEmail = (newText) => {
-    setEmail(newText);
+  const handleChangeEmail = () => {
+    setEmail();
   };
 
   const handleSenha = () => {
-    setSenha("");
+    setSenha();
   };
 
-  const handleChangeSenha = (newText) => {
-    setSenha(newText);
+  const handleChangeSenha = () => {
+    setSenha();
   };
 
 
@@ -57,8 +63,13 @@ export const Login = () => {
         source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
       />
       <TitleVerde>Login</TitleVerde>
+<<<<<<< HEAD
       
         <InputLinhaVerde
+=======
+
+      <InputLinha
+>>>>>>> origin/edu
         value={email}
         onFocus={handleEmail}
         onChangeText={handleChangeEmail}
@@ -66,13 +77,16 @@ export const Login = () => {
       />
 
 
-      <InputLinhaVerde
+      <InputLinhaSenha
+        onPress={() => { secure ? setSecure(false) : setSecure(true) }}
         value={senha}
         onFocus={handleSenha}
         onChangeText={handleChangeSenha}
+        secureTextEntry={secure}
         placeholder="Senha"
       />
 
+<<<<<<< HEAD
       <LinkRosa>Esqueceu sua senha?</LinkRosa>
 
       <ButtonVerde>
@@ -82,8 +96,28 @@ export const Login = () => {
       <TextVerde>É novo aqui? <TouchableOpacity>
 
         <LinkRosa>Crie sua conta agora!</LinkRosa>
+=======
+      <TouchableOpacity >
+        <LinkRosa>Esqueceu sua senha?</LinkRosa>
+>>>>>>> origin/edu
       </TouchableOpacity>
-      </TextVerde>
+
+
+      {/* <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginLeft }}> */}
+
+      <ViewNovoAqui>
+
+        <TextVerde>É novo aqui?</TextVerde>
+
+        <TouchableOpacity>
+          <LinkRosaConta>Crie sua conta agora!</LinkRosaConta>
+        </TouchableOpacity>
+
+      </ViewNovoAqui>
+
+      {/* </View> */}
+
+
 
 
     </Container>
@@ -118,7 +152,7 @@ export const Login = () => {
   //         <LinkRosa>Esqueceu sua senha?</LinkRosa>
   //       </TouchableOpacity>
   //     </ViewLeft>
-      
+
   //     <ButtonVerde>
   //       <TextButtonVerde>ENTRAR</TextButtonVerde>
   //     </ButtonVerde>

@@ -7,10 +7,13 @@ import { LinkRosa, LinkRosaCod, TextInputVerde } from "../../components/text/sty
 import { TextButtonVerde } from "../../components/textbutton/style";
 import { TitleVerde } from "../../components/title/style";
 import { ViewSpace10px, ViewSpaceTop } from "../../components/views/style";
+import { InputLinha, InputLinhaSenha } from "../../components/inputFunction/inputFunction";
 
 export const cadastro = () => {
 
   const [nome, setNome] = useState('');
+
+  const [secure, setSecure] = useState(true);
 
   const handleNome = () => {
     setNome('');
@@ -70,7 +73,7 @@ export const cadastro = () => {
 
       <TitleVerde>Cadastro</TitleVerde>
 
-      <InputLinhaVerde
+      <InputLinha
         value={nome}
         onFocus={handleNome}
         onChangeText={handleChangeNome}
@@ -81,7 +84,7 @@ export const cadastro = () => {
 
       <ViewSpace10px></ViewSpace10px>
 
-      <InputLinhaVerde
+      <InputLinha
         value={email}
         onFocus={handleEmail}
         onChangeText={handleChangeEmail}
@@ -90,22 +93,27 @@ export const cadastro = () => {
 
       <ViewSpace10px></ViewSpace10px>
 
-      <InputLinhaVerde
+      <InputLinhaSenha
+        onPress={() => { secure ? setSecure(false) : setSecure(true) }}
         value={senha}
         onFocus={handleSenha}
         onChangeText={handleChangeSenha}
+        secureTextEntry={secure}
         placeholder="Senha"
       />
 
-      <ViewSpace10px></ViewSpace10px>
+      {/* <ViewSpace10px></ViewSpace10px> */}
 
-      <InputLinhaVerde
-        value={confirmarSenha}
-        onFocus={handleConfirmarSenha}
-        onChangeText={handleChangeConfirmarSenha}
-        placeholder="Confirmar Senha"
+      <InputLinhaSenha
+        onPress={() => { secure ? setSecure(false) : setSecure(true) }}
+        value={senha}
+        onFocus={handleSenha}
+        onChangeText={handleChangeSenha}
+        secureTextEntry={secure}
+        placeholder="Senha"
       />
-      <ViewSpace10px></ViewSpace10px>
+
+      {/* <ViewSpace10px></ViewSpace10px> */}
 
       <ButtonVerde onPress={() => Cadastrar()}>
         <TextButtonVerde>CADASTRAR</TextButtonVerde>

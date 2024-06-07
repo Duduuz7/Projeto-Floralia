@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 export const CodeView = styled.View`
     margin-top: 35px;
     gap: 25px;
-    margin-bottom: -6px;
+    margin-bottom: 10px;
 `;
 
 export const CodeText = styled.Text`
