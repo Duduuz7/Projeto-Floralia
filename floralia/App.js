@@ -8,6 +8,10 @@ import {  useFonts,
   Exo2_600SemiBold,
   Exo2_700Bold, } from '@expo-google-fonts/exo-2';
   import { Login } from './src/screens/login';
+import { Localization } from './src/screens/localization/localization';
+import { ModalEncomenda } from './src/screens/ModalEncomenda/ModalEncomenda';
+import { ModalCancelamento } from './src/screens/ModalEncomenda/ModalCancelamento';
+import { ModalCarrinho } from './src/screens/ModalEncomenda/ModalCarrinho';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +40,26 @@ export default function App() {
           name="Login"
           component={Login}
           options={{title: "Login"}}
+        />
+        <Stack.Screen
+          name="Localization"
+          component={Localization}
+          options={{title: "Localization"}}
+        />
+        <Stack.Screen
+          name="ModalEncomenda"
+          component={ModalEncomenda}
+          options={{title: "Modal Encomenda"}}
+        />
+        <Stack.Screen
+          name="ModalCancelamento"
+          component={ModalCancelamento}
+          options={{title: "Modal Cancelamento"}}
+        />
+        <Stack.Screen
+          name="ModalCarrinho"
+          component={ModalCarrinho}
+          options={{title: "Modal Carrinho"}}
         />
       </Stack.Navigator>
     </NavigationContainer>
