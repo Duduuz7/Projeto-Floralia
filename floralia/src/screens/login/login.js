@@ -31,8 +31,8 @@ import Feather from "@expo/vector-icons/Feather";
 
 export const Login = () => {
 
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [email, setEmail] = useState("email@email.com");
+  const [senha, setSenha] = useState("12345");
 
   const handleEmail = () => {
     setEmail("");
@@ -58,7 +58,7 @@ export const Login = () => {
       />
       <TitleVerde>Login</TitleVerde>
       
-         <InputLinhaVerde
+        <InputLinhaVerde
         value={email}
         onFocus={handleEmail}
         onChangeText={handleChangeEmail}
@@ -74,6 +74,10 @@ export const Login = () => {
       />
 
       <LinkRosa>Esqueceu sua senha?</LinkRosa>
+
+      <ButtonVerde>
+        <TextButtonVerde>ENTRAR</TextButtonVerde>
+      </ButtonVerde>
 
       <TextVerde>É novo aqui? <TouchableOpacity>
 

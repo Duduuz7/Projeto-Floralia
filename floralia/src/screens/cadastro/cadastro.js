@@ -53,6 +53,15 @@ export const cadastro = () => {
     setConfirmarSenha(newText);
   };
 
+  async function Cadastrar() {
+    if (senha == confirmarSenha) {
+      alert("Senhas iguais")
+      // navigation.navigate("Perfil")
+    } else {
+      alert("Senhas não iguais")
+    }
+}
+
   return (
     <Container>
       <ViewSpaceTop></ViewSpaceTop>
@@ -98,7 +107,7 @@ export const cadastro = () => {
       />
       <ViewSpace10px></ViewSpace10px>
 
-      <ButtonVerde>
+      <ButtonVerde onPress={() => Cadastrar()}>
         <TextButtonVerde>CADASTRAR</TextButtonVerde>
       </ButtonVerde>
 
