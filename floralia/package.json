@@ -10,17 +10,24 @@
   },
   "dependencies": {
     "@expo-google-fonts/exo-2": "^0.2.3",
+    "@expo-google-fonts/quicksand": "^0.2.3",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "expo": "~51.0.9",
     "expo-app-loading": "^2.1.1",
     "expo-font": "~12.0.6",
     "expo-status-bar": "~1.12.1",
+    "lottie-react-native": "^6.0.0-rc.5",
     "react": "18.2.0",
     "react-native": "0.74.1",
+<<<<<<< HEAD
     "styled-components": "^6.1.11",
     "react-native-web": "~0.19.10",
     "@expo/metro-runtime": "~3.2.1"
+=======
+    "react-native-svg": "^15.3.0",
+    "styled-components": "^6.1.11"
+>>>>>>> origin/cat
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
