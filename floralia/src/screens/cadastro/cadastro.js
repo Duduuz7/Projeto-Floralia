@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ButtonVerde } from "../../components/button/style";
 import { Container } from "../../components/container/style";
-import { Logo } from "../../components/images/style";
+import { Logo, LogoCadastro } from "../../components/images/style";
 import { InputLinhaVerde } from "../../components/input/style";
-import { LinkRosa, TextInputVerde } from "../../components/text/style";
+import { LinkRosa, LinkRosaCod, TextInputVerde } from "../../components/text/style";
 import { TextButtonVerde } from "../../components/textbutton/style";
 import { TitleVerde } from "../../components/title/style";
 import { ViewSpace10px, ViewSpaceTop } from "../../components/views/style";
@@ -57,7 +57,7 @@ export const cadastro = () => {
     <Container>
       <ViewSpaceTop></ViewSpaceTop>
 
-      <Logo source={require("../../assets/img/logoFloralia.png")} />
+      <LogoCadastro source={require("../../assets/img/logoFloralia.png")} />
 
       <TitleVerde>Cadastro</TitleVerde>
 
@@ -104,7 +104,7 @@ export const cadastro = () => {
 
       <ViewSpace10px></ViewSpace10px>
 
-      <LinkRosa>Cancelar</LinkRosa>
+      <LinkRosaCod>Cancelar</LinkRosaCod>
 
     </Container>
   );

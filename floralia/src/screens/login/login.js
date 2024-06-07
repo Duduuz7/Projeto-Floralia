@@ -10,6 +10,7 @@ import { TitleVerde } from "../../components/title/style";
 import { ButtonVerde } from "../../components/button/style";
 import { TextButtonVerde } from "../../components/textbutton/style";
 import { Logo } from "../../components/images/style";
+
 import {
   ViewInputIcon,
   ViewLeft,
@@ -17,8 +18,10 @@ import {
   ViewSpaceBottom,
   ViewSpaceTop,
 } from "../../components/views/style";
+
 import { useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
+
 {
   /* <Feather name="eye" size={24} color="black" /> */
 }
@@ -27,7 +30,9 @@ import Feather from "@expo/vector-icons/Feather";
 }
 
 export const Login = () => {
+
   const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
   const handleEmail = () => {
     setEmail("");
@@ -37,8 +42,6 @@ export const Login = () => {
     setEmail(newText);
   };
 
-  const [senha, setSenha] = useState("");
-
   const handleSenha = () => {
     setSenha("");
   };
@@ -47,22 +50,21 @@ export const Login = () => {
     setSenha(newText);
   };
 
+
   return (
     <Container>
-      <ViewSpaceTop></ViewSpaceTop>
-
-      <Logo source={require("../../assets/img/logoFloralia.png")} />
-
+      <Logo
+        source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
+      />
       <TitleVerde>Login</TitleVerde>
-
       
-        <InputLinhaVerde
-          value={email}
-          onFocus={handleEmail}
-          onChangeText={handleChangeEmail}
-          placeholder="Email"
-        />
-       
+         <InputLinhaVerde
+        value={email}
+        onFocus={handleEmail}
+        onChangeText={handleChangeEmail}
+        placeholder="Email"
+      />
+
 
       <InputLinhaVerde
         value={senha}
@@ -71,33 +73,110 @@ export const Login = () => {
         placeholder="Senha"
       />
 
-      <ViewLeft>
-        <TouchableOpacity>
-          <LinkRosa>Esqueceu sua senha?</LinkRosa>
-        </TouchableOpacity>
-      </ViewLeft>
-      <ButtonVerde>
-        <TextButtonVerde>ENTRAR</TextButtonVerde>
-      </ButtonVerde>
+      <LinkRosa>Esqueceu sua senha?</LinkRosa>
 
-      <ViewSpaceBottom></ViewSpaceBottom>
+      <TextVerde>É novo aqui? <TouchableOpacity>
 
-      <ViewLinha>
-        <TextVerde>
-          É novo aqui?{" "}
-          <TouchableOpacity>
-            <LinkRosa>Crie sua conta agora!</LinkRosa>
-          </TouchableOpacity>
-        </TextVerde>
-      </ViewLinha>
+        <LinkRosa>Crie sua conta agora!</LinkRosa>
+      </TouchableOpacity>
+      </TextVerde>
+
+
     </Container>
-  );
-};
+  )
 
-const styles = StyleSheet.create({
-    icon: {
-      position: 'absolute',
-      right: 10,
-    },
-  });
-  
+  // return (
+  //   <Container>
+  //     <ViewSpaceTop></ViewSpaceTop>
+
+  //     <Logo source={require("../../assets/img/logoFloralia.png")} />
+
+  //     <TitleVerde>Login</TitleVerde>
+
+
+  //     <InputLinhaVerde
+  //       value={email}
+  //       onFocus={handleEmail}
+  //       onChangeText={handleChangeEmail}
+  //       placeholder="Email"
+  //     />
+
+
+  //     <InputLinhaVerde
+  //       value={senha}
+  //       onFocus={handleSenha}
+  //       onChangeText={handleChangeSenha}
+  //       placeholder="Senha"
+  //     />
+
+  //     <ViewLeft>
+  //       <TouchableOpacity>
+  //         <LinkRosa>Esqueceu sua senha?</LinkRosa>
+  //       </TouchableOpacity>
+  //     </ViewLeft>
+      
+  //     <ButtonVerde>
+  //       <TextButtonVerde>ENTRAR</TextButtonVerde>
+  //     </ButtonVerde>
+
+  //     <ViewSpaceBottom></ViewSpaceBottom>
+
+  //     <ViewLinha>
+  //       <TextVerde>
+  //         É novo aqui?{" "}
+  //         <TouchableOpacity>
+  //           <LinkRosa>Crie sua conta agora!</LinkRosa>
+  //         </TouchableOpacity>
+  //       </TextVerde>
+  //     </ViewLinha>
+  //   </Container>
+  // );
+}
+
+
+// return (
+//   <Container>
+//     <ViewSpaceTop></ViewSpaceTop>
+
+//     <Logo source={require("../../assets/img/logoFloralia.png")} />
+
+//     <TitleVerde>Login</TitleVerde>
+
+
+//     <InputLinhaVerde
+//       value={email}
+//       onFocus={handleEmail}
+//       onChangeText={handleChangeEmail}
+//       placeholder="Email"
+//     />
+
+
+//     <InputLinhaVerde
+//       value={senha}
+//       onFocus={handleSenha}
+//       onChangeText={handleChangeSenha}
+//       placeholder="Senha"
+//     />
+
+//     <ViewLeft>
+//       <TouchableOpacity>
+//         <LinkRosa>Esqueceu sua senha?</LinkRosa>
+//       </TouchableOpacity>
+//     </ViewLeft>
+//     <ButtonVerde>
+//       <TextButtonVerde>ENTRAR</TextButtonVerde>
+//     </ButtonVerde>
+
+//     <ViewSpaceBottom></ViewSpaceBottom>
+
+//     <ViewLinha>
+//       <TextVerde>
+//         É novo aqui?{" "}
+//         <TouchableOpacity>
+//           <LinkRosa>Crie sua conta agora!</LinkRosa>
+//         </TouchableOpacity>
+//       </TextVerde>
+//     </ViewLinha>
+//   </Container>
+// );
+

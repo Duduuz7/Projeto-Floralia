@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { ButtonVerde } from "../../components/button/style";
 import { Container } from "../../components/container/style";
-import { Logo } from "../../components/images/style";
+import { Logo, LogoRecuperar } from "../../components/images/style";
 import { InputLinhaVerde } from "../../components/input/style";
 import {
     LinkRosa,
+  LinkRosaCod,
   TextInputVerde,
   TextoQuicksandMedium,
 } from "../../components/text/style";
@@ -28,14 +29,14 @@ export const recuperarSenha = () => {
 
       <ViewSpaceTop></ViewSpaceTop>
 
-      <Logo source={require("../../assets/img/logoFloralia.png")} />
+      <LogoRecuperar source={require("../../assets/img/logoFloralia.png")} />
 
       <TitleVerde>Recuperação de senha</TitleVerde>
       
       <ViewSpace></ViewSpace>
 
       <TextoQuicksandMedium>
-        Digite abaixo seu email para receber o código de recuperação de senha !
+        Deigite abaixo seu email para receber o código de rcuperação de senha !
       </TextoQuicksandMedium>
 
 
@@ -50,9 +51,10 @@ export const recuperarSenha = () => {
         <TextButtonVerde>CONTINUAR</TextButtonVerde>
       </ButtonVerde>
 
+      {/* <LinkRosaCod>Cancelar</LinkRosaCod> */}
       <ViewSpace></ViewSpace>
 
-      <LinkRosa>Cancelar</LinkRosa>
+      <LinkRosaCod>Cancelar</LinkRosaCod>
     </Container>
   );
 };
