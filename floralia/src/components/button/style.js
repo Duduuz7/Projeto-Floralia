@@ -21,3 +21,9 @@ export const BackgroundIcon = styled.TouchableOpacity`
   border-radius: 70px;
   justify-content: center;
 `
+
+export const BackgroundIconCamera = styled(BackgroundIcon)`
+  position: absolute;
+  top: 175px;
+  right: 0px;
+`

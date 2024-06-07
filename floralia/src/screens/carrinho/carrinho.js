@@ -9,6 +9,7 @@ import { useState } from "react"
 import { Favoritos } from "../favoritos/favoritos"
 import { Card } from "../../components/cards/cardsEncomenda/cardEncomenda"
 import { CardProduto } from "../../components/cards/cardFavoritos/cardFavoritos"
+import { CardCarrinho } from "../../components/cards/cardCarrinho/cardCarrinho"
 
 
 export const Carrinho = ({navigation}) => {
@@ -45,7 +46,7 @@ export const Carrinho = ({navigation}) => {
                 keyExtractor={(item) => item.id}
                 data={carrinho}
                 renderItem={({ item }) => (
-                    <CardProduto
+                    <CardCarrinho
                         navigation={navigation}
                         name={item.name}
                         status={item.status}

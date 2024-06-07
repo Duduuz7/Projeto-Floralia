@@ -7,6 +7,10 @@ export const TitleVerde = styled.Text`
     flex-direction: "start";
     margin-top: 20px;
 `
+
+export const TitleName = styled(TitleVerde)`
+    margin-bottom: 16px;
+`
 export const TitleVerdeProfile = styled(TitleVerde)`
  text-align: left;
 `

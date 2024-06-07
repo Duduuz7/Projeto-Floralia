@@ -5,8 +5,9 @@ import { CardData, CardName, CardPreco } from "../../title/style";
 import { CardContainer } from "../cardsEncomenda/style";
 import { BackgroundIcon } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export const CardProduto = ({
+export const CardCarrinho = ({
     name,
     precoProduto,
 }) => {
@@ -35,7 +36,7 @@ export const CardProduto = ({
 
                 <View style={{ marginTop: 24, marginLeft: 17 }}>
                     <BackgroundIcon>
-                        <Ionicons name="heart-dislike-outline" size={26} color="#B83B5E" />
+                        <MaterialCommunityIcons name="cart-remove" size={24} color="#B83B5E" />
                     </BackgroundIcon>
                 </View >
                 {/* </CardContainerItem> */}

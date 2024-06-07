@@ -1,15 +1,17 @@
-import { FlatList, ScrollView, View } from "react-native"
-import { Container, FlatContainer, HrProfile } from "../../components/container/style"
-import { Header, HeaderProfile } from "../../components/header/style"
-import { ProfilePic } from "../../components/images/profilepic/style"
-import { CameraIcon, LogoHeader, MenuHamburguer } from "../../components/images/style"
-import { TitleVerde, TitleVerdeProfile } from "../../components/title/style"
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useState } from "react"
-import { Card } from "../../components/cards/cardsEncomenda/cardEncomenda"
 import { Feather } from '@expo/vector-icons';
-import { BackgroundIcon } from "../../components/button/style"
+
+import { useState } from 'react';
+import { ScrollView, View } from 'react-native';
+import { Container, ContainerProfile, FlatContainer, HrProfile } from '../../components/container/style';
+import { HeaderProfile } from '../../components/header/style';
+import { LogoHeader } from '../../components/images/style';
+import { BackGroundIconCamera, BackgroundIcon, BackgroundIconCamera } from '../../components/button/style';
+import { TitleName, TitleVerdeProfile } from '../../components/title/style';
+import { Card } from '../../components/cards/cardsEncomenda/cardEncomenda';
+import { ProfilePic, ProfilePicContainer } from '../../components/images/profilepic/style';
+
 
 export const Profile = ({ navigation }) => {
 
@@ -60,17 +62,29 @@ export const Profile = ({ navigation }) => {
 
                 </HeaderProfile>
 
-                <ProfilePic
-                // source={{ uri: photo }}
-                />
+                <ProfilePicContainer>
+                    <ProfilePic
+                    // source={{}}
+                    />
 
-                <BackgroundIcon>
-                    <Feather name="camera" size={30} color="#99004F" />
-                </BackgroundIcon>
+                    <BackgroundIconCamera>
+                        <Feather name="camera" size={30} color="#99004F" />
+                    </BackgroundIconCamera>
 
-                <TitleVerde>Elza Lucia</TitleVerde>
+                </ProfilePicContainer>
 
-                <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+
+
+                <ContainerProfile>
+
+                    <TitleName style={{ textAlign: 'center' }}>Elza Lucia</TitleName>
+
+
+                    <MaterialCommunityIcons name="pencil-outline" size={24} color="#B83B5E" />
+
+                </ContainerProfile>
+
+
 
                 <TitleVerdeProfile>Minhas Encomendas:</TitleVerdeProfile>
 
@@ -91,6 +105,6 @@ export const Profile = ({ navigation }) => {
                 <HrProfile />
 
             </Container>
-        </ScrollView>
+        </ScrollView >
     )
 }
