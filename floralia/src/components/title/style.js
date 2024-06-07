@@ -38,6 +38,4 @@ export const CardPreco = styled(CardName)`
     color: #99004F;
 `
 
-export const CardDataBlack = styled(CardData)`
-    color: black;
-`
+

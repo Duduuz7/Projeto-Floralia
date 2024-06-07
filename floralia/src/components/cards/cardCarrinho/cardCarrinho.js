@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { BoxCard, CardContainerItem, CardTextContainer } from "../../container/style";
 import { CardImage } from "../../images/style";
-import { CardData, CardName, CardPreco } from "../../title/style";
+import { CardName, CardPreco } from "../../title/style";
 import { CardContainer } from "../cardsEncomenda/style";
 import { BackgroundIcon } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
