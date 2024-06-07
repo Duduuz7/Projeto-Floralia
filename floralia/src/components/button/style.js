@@ -5,7 +5,7 @@ export const ButtonVerde = styled.TouchableOpacity`
     height: 44px;
 
     background-color: #1C4B00;
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 12px 8px 12px 8px;
     border-radius: 18px;
 

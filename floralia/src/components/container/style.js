@@ -51,3 +51,10 @@ export const BackgroundIcon = styled.SafeAreaView`
     background-color: #fafafa;
     gap: 5px;
 `
+
+export const ViewNovoAqui = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+`

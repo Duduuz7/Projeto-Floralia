@@ -1,11 +1,19 @@
-import { ActivityIndicator, StyleSheet, View } from "react-native";
-import RNPickerSelect from 'react-native-picker-select';
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useRef, useState } from "react";
-import moment from "moment";
 
-export function Input({
+import { InputLinhaVerde } from "../input/style";
+import { ContainerSecure, EyeContainer } from "./style";
+
+import Feather from "@expo/vector-icons/Feather";
+
+{
+    /* <Feather name="eye" size={24} color="black" /> */
+}
+{
+    /* <Feather name="eye-off" size={24} color="black" /> */
+}
+
+
+
+export function InputLinha({
     placeholder,
     fieldValue,
     onChangeText,
@@ -16,7 +24,7 @@ export function Input({
     secureTextEntry = false
 }) {
     return (
-        <InputText
+        <InputLinhaVerde
             editable={editable}
             placeholder={placeholder}
             keyboardType={keyboardType}
@@ -26,5 +34,38 @@ export function Input({
             onChangeText={onChangeText}
             secureTextEntry={secureTextEntry}
         />
+    )
+}
+
+export function InputLinhaSenha({
+    onPress,
+    placeholder,
+    fieldValue,
+    onChangeText,
+    keyboardType,
+    maxLength,
+    placeholderTextColor,
+    editable = true,
+    secureTextEntry = false
+
+}) {
+    return (
+        <ContainerSecure>
+            <EyeContainer onPress={onPress}>
+                {secureTextEntry ? <Feather name="eye" size={24} color="#1C4B00" /> : <Feather name="eye-off" size={24} color="#1C4B00" />}
+            </EyeContainer>
+
+            <InputLinhaVerde
+                editable={editable}
+                placeholder={placeholder}
+                keyboardType={keyboardType}
+                placeholderTextColor={placeholderTextColor}
+                maxLength={maxLength}
+                value={fieldValue}
+                onChangeText={onChangeText}
+                secureTextEntry={secureTextEntry}
+            />
+
+        </ContainerSecure>
     )
 }
