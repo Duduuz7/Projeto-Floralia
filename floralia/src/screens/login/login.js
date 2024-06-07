@@ -80,6 +80,10 @@ export const Login = () => {
         <LinkRosa>Esqueceu sua senha?</LinkRosa>
       </TouchableOpacity>
 
+      <ButtonVerde>
+        <TextButtonVerde>ENTRAR</TextButtonVerde>
+      </ButtonVerde>
+
 
       {/* <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginLeft }}> */}
 
@@ -131,9 +135,7 @@ export const Login = () => {
   //       </TouchableOpacity>
   //     </ViewLeft>
 
-  //     <ButtonVerde>
-  //       <TextButtonVerde>ENTRAR</TextButtonVerde>
-  //     </ButtonVerde>
+
 
   //     <ViewSpaceBottom></ViewSpaceBottom>
 
