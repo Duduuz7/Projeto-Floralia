@@ -35,7 +35,6 @@ export const ResultadoPesquisa = ({ navigation }) => {
             </Header>
 
 
-
             <FlatContainer
                 keyExtractor={(item) => item.id}
                 data={resultado}

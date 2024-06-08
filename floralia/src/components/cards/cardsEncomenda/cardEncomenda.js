@@ -6,6 +6,7 @@ import { CardData, CardName, CardStatus } from "../../title/style";
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { BackgroundIcon, BackgroundIconGreen } from "../../button/style";
+import { Ionicons } from '@expo/vector-icons';
 
 export const Card = ({
     name,
@@ -17,66 +18,37 @@ export const Card = ({
     const Check = () => {
         if (status === "Pendente") {
             return (
-                <CardContainer>
-                    <BoxCard>
-                        <CardImage />
 
-                        <CardTextContainer>
+                <View style={{ marginTop: 24, marginLeft: 17 }}>
+                    <BackgroundIcon>
 
-                            <CardName>{name}</CardName>
+                        {/* <AntDesign name="close" size={24} color="#B80000" /> */}
 
-                            <CardStatus>Status: {status}</CardStatus>
+                        <Ionicons name="close" size={32} color="#B80000" />
 
-                            <CardData>Data: {dataEncomenda}</CardData>
+                    </BackgroundIcon>
+                </View >
 
-                        </CardTextContainer>
-
-                        <View style={{ marginTop: 24, marginLeft: 17 }}>
-                            <BackgroundIcon>
-                                <AntDesign name="close" size={24} color="#B80000" />
-                            </BackgroundIcon>
-                        </View >
-
-                    </BoxCard>
-                </CardContainer>
             );
-        } else if (status === "Realizado") {
+        } else if (status === "Retirado") {
             return (
-                <CardContainer>
-                    <BoxCard>
-                        <CardImage />
 
-                        <CardTextContainer>
+                <View style={{ marginTop: 24, marginLeft: 17 }}>
+                    <BackgroundIconGreen>
+                        <FontAwesome6 name="check" size={24} color="#1C4B00" />
+                    </BackgroundIconGreen>
+                </View >
 
-                            <CardName>{name}</CardName>
-
-                            <CardStatus>Status: {status}</CardStatus>
-
-                            <CardData>Data: {dataEncomenda}</CardData>
-
-                        </CardTextContainer>
-
-                        <View style={{ marginTop: 24, marginLeft: 17 }}>
-                            <BackgroundIconGreen>
-                                <FontAwesome6 name="check" size={24} color="#1C4B00" />
-                            </BackgroundIconGreen>
-                        </View >
-
-                    </BoxCard>
-                </CardContainer>
             );
         } else if (status === "Cancelado") {
             return (
-                <View style={{ marginTop: 24, marginLeft: 17 }}>
-                    <BackgroundIcon>
-                        <AntDesign name="close" size={24} color="#B80000" />
-                    </BackgroundIcon>
-                </View >
+                <></>
             );
         }
     };
 
     return (
+        
         <CardContainer>
             <BoxCard>
                 <CardImage />
@@ -93,10 +65,10 @@ export const Card = ({
 
                 {Check()}
 
-                
+
 
             </BoxCard>
-            
+
         </CardContainer>
 
     );

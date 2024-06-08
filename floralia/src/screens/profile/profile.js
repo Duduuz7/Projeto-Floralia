@@ -17,9 +17,9 @@ export const Profile = ({ navigation }) => {
 
     const [encomendas, setEncomendas] = useState([
         { name: 'Buque de rosas', id: '1', status: 'Pendente', dataEncomenda: '12/06' },
-        { name: 'Buque de flores', id: '2', status: 'Recebido', dataEncomenda: '12/06' },
+        { name: 'Buque de flores', id: '2', status: 'Retirado', dataEncomenda: '12/06' },
         { name: 'Buque de lirios', id: '3', status: 'Cancelado', dataEncomenda: '12/06' },
-        { name: 'Buque de lirios', id: '4', status: 'pendente', dataEncomenda: '12/06' },
+        { name: 'Buque de lirios', id: '4', status: 'Pendente', dataEncomenda: '12/06' },
     ]);
 
     // const [photo, setPhoto] = useState(null)

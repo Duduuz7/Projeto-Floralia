@@ -29,7 +29,7 @@ export const CardPesquisa = ({
                     <CardPreco>
                         3x <CardData>de </CardData>
                         <CardPreco>
-                            ${!isNaN(parseFloat(valor)) ? (parseFloat(valor) / 3).toFixed(2).replace('.', ',') : '0,00'}
+                            ${!isNaN(parseFloat(valor)) ? (parseFloat(valor) / 3).toFixed(2).replace('.', ',') : '00,00'}
                         </CardPreco>
                         <CardData> sem juros</CardData>
                     </CardPreco>
