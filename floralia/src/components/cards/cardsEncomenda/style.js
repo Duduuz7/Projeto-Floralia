@@ -9,11 +9,19 @@ export const CardContainer = styled.TouchableOpacity`
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
-  border: 1px;
-  border-color: #1C4B00;
+ 
   /* padding: 10px; */
   width: 90%;
   height: 108px;
   flex-direction: row;
 
+  border: 2px;
+  border-color: ${props => props.borderColor};
+
+
 `;
+
+export const CardContainerGray = styled(CardContainer)`
+  border-color: #1C4B00;
+
+`

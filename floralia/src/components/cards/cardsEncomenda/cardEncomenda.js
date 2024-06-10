@@ -48,8 +48,10 @@ export const Card = ({
     };
 
     return (
-        
-        <CardContainer>
+
+        <CardContainer borderColor={
+            status == "Pendente" ? "#1C4B00" : "#8C8A97"
+        }>
             <BoxCard>
                 <CardImage />
 
@@ -64,8 +66,6 @@ export const Card = ({
                 </CardTextContainer>
 
                 {Check()}
-
-
 
             </BoxCard>
 

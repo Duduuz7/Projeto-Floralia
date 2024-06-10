@@ -5,18 +5,38 @@ import { LogoHeader } from "../../components/images/style"
 import { TitleVerde } from "../../components/title/style"
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CardProduto } from "../../components/cards/cardFavoritos/cardFavoritos"
 
 
 export const Favoritos = ({ navigation }) => {
 
-    const [favoritos, setFavoritos] = useState([
-        { name: 'Buque de rosas', id: '1', status: 'Pendente', precoProduto: '389,90' },
-        { name: 'Buque de flores', id: '2', status: 'Recebido', precoProduto: '389,90' },
-        { name: 'Buque de lirios', id: '3', status: 'Cancelado', precoProduto: '389,90' },
-        { name: 'Buque de lirios', id: '4', status: 'pendente', precoProduto: '389,90' },
-    ]);
+    // const [favoritos, setFavoritos] = useState([
+    //     { name: 'Buque de rosas', id: '1', status: 'Pendente', precoProduto: '389,90' },
+    //     { name: 'Buque de flores', id: '2', status: 'Recebido', precoProduto: '389,90' },
+    //     { name: 'Buque de lirios', id: '3', status: 'Cancelado', precoProduto: '389,90' },
+    //     { name: 'Buque de lirios', id: '4', status: 'pendente', precoProduto: '389,90' },
+    // ]);
+
+    const [listaFavoritos, setListaFavoritos] = useState([]) 
+
+    async function ListarFavoritos() {
+
+        // console.log(`/Favorito/BuscarPorIdUsuario?id=${token.idUsuario}`);
+        await api.get(`/Favorito/BuscarPorIdUsuario?id=${token.idUsuario}`).then(response => {
+
+            setListaFavoritos(response.data)
+            console.log(response.data);
+
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
+    useEffect(()=> {
+        ListarFavoritos();
+    },[])
 
     return (
         <Container>
@@ -40,7 +60,7 @@ export const Favoritos = ({ navigation }) => {
 
             <FlatContainer
                 keyExtractor={(item) => item.id}
-                data={favoritos}
+                data={ListarFavoritos()}
                 renderItem={({ item }) => (
                     <CardProduto
                         navigation={navigation}
@@ -52,7 +72,6 @@ export const Favoritos = ({ navigation }) => {
             />
 
             <HrProfile />
-
 
         </Container>
 

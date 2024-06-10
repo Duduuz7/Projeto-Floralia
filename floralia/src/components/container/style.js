@@ -58,3 +58,14 @@ export const ContainerProfile = styled.SafeAreaView`
   justify-content: center;
 `
 
+export const FooterContainer = styled.SafeAreaView`
+  height: 100px;
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  elevation: 44px;
+  border:2px;
+  border-color: black;
+`
+
