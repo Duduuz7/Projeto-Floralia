@@ -11,7 +11,7 @@ import { TitleVerde } from "../../components/title/style";
 import { ButtonVerde } from "../../components/button/style";
 import { TextButtonVerde } from "../../components/textbutton/style";
 import { Logo } from "../../components/images/style";
-
+import api from "../../services/services";
 import {
   ViewInputIcon,
   ViewLeft,
@@ -19,7 +19,7 @@ import {
   ViewSpaceBottom,
   ViewSpaceTop,
 } from "../../components/views/style";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
 
 import {
@@ -27,11 +27,12 @@ import {
   InputLinhaSenha,
 } from "../../components/inputFunction/inputFunction";
 
-export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+export const Login = ({ navigation }) => {
+  const [email, setEmail] = useState("gui@email.com");
+  const [senha, setSenha] = useState("12345");
   const [loading, setLoading] = useState(false);
   const [secure, setSecure] = useState(true);
+  const [press, setPress] = useState(false);
 
   const handleEmail = () => {
     setEmail("");
@@ -49,6 +50,43 @@ export const Login = () => {
     setSenha();
   };
 
+  const ForgotSenha = () => {
+    navigation.navigate("recuperarSenha");
+  };
+
+  const LinkCadastro = () => {
+    navigation.navigate("cadastro");
+  };
+
+  async function LoginFunct() {
+    if (!email || !senha) {
+      // Verifica se os campos de e-mail e senha estão preenchidos
+      Alert.alert("Erro", "Por favor, preencha todos os campos."); // Exibe uma mensagem de erro se algum campo estiver vazio
+      return;
+    }
+
+    // setShowSpinner(true);
+    // setPress(true);
+
+    try {
+      const response = await api.post("/Login", { email, senha });
+      await AsyncStorage.setItem("token", JSON.stringify(response.data));
+      // navigation.navigate("Main");
+      console.log(email);
+      alert("logou");
+    } catch (error) {
+      console.log(error);
+      alert(
+        "Erro",
+        "Erro ao fazer login. Por favor, verifique suas credenciais."
+      ); // Exibe uma mensagem de erro em caso de falha no login
+    }
+    // finally {
+    //     setPress(false);
+    //     setShowSpinner(false);
+    // }
+  }
+
   return (
     <Container>
       <Logo
@@ -59,8 +97,8 @@ export const Login = () => {
       <InputLinha
         value={email}
         onFocus={handleEmail}
-        onChangeText={handleChangeEmail}
-        placeholder="Email"
+        onChangeText={(event) => setEmail(event)}
+        placeholder= {email}
       />
 
       <InputLinhaSenha
@@ -69,14 +107,16 @@ export const Login = () => {
         }}
         value={senha}
         onFocus={handleSenha}
-        onChangeText={handleChangeSenha}
+        onChangeText={(txt) => setSenha(txt)}
         secureTextEntry={secure}
-        placeholder="Senha"
+        placeholder={senha}
       />
 
-      <LinkRosa>Esqueceu sua senha?</LinkRosa>
+      <TouchableOpacity>
+        <LinkRosa>Esqueceu sua senha?</LinkRosa>
+      </TouchableOpacity>
 
-      <ButtonVerde>
+      <ButtonVerde onPress={(e) => LoginFunct()}>
         <TextButtonVerde>ENTRAR</TextButtonVerde>
       </ButtonVerde>
 

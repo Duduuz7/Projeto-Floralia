@@ -1,29 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Navegacao } from './src/screens/navegacao/navegacao';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import Splash from './src/screens/splash/splash';
-import { Profile } from './src/screens/profile/profile';
-import { Login } from './src/screens/login/login';
-import { recuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
-import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
-import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
-import { Favoritos } from './src/screens/favoritos/favoritos';
-import { Carrinho } from './src/screens/carrinho/carrinho';
-<<<<<<< HEAD
-import { CodigoRecuperarSenha } from './src/screens/codigoRecuperarSenha/codigoRecuperarSenha';
-import { atualizarSenha } from './src/screens/atualizarSenha/atualizarSenha';
-import { cadastro } from './src/screens/cadastro/cadastro';
-=======
-import { Home } from './src/screens/home/home';
->>>>>>> origin/mat
-
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { Navegacao } from "./src/screens/navegacao/navegacao";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import Splash from "./src/screens/splash/splash";
+import { Profile } from "./src/screens/profile/profile";
+import { Login } from "./src/screens/login/login";
+import { recuperarSenha } from "./src/screens/recuperarSenha/recuperarSenha";
+import {
+  useFonts,
+  Exo2_400Regular,
+  Exo2_500Medium,
+  Exo2_600SemiBold,
+  Exo2_700Bold,
+} from "@expo-google-fonts/exo-2";
+import {
+  Quicksand_300Light,
+  Quicksand_400Regular,
+  Quicksand_500Medium,
+  Quicksand_600SemiBold,
+  Quicksand_700Bold,
+} from "@expo-google-fonts/quicksand";
+import { Favoritos } from "./src/screens/favoritos/favoritos";
+import { Carrinho } from "./src/screens/carrinho/carrinho";
+import { CodigoRecuperarSenha } from "./src/screens/codigoRecuperarSenha/codigoRecuperarSenha";
+import { atualizarSenha } from "./src/screens/atualizarSenha/atualizarSenha";
+import { cadastro } from "./src/screens/cadastro/cadastro";
+import { Home } from "./src/screens/home/home";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [fontsLoaded, fontsError] = useFonts({
     Exo2_400Regular,
     Exo2_500Medium,
@@ -32,8 +39,8 @@ export default function App() {
     Quicksand_400Regular,
     Quicksand_500Medium,
     Quicksand_600SemiBold,
-    Quicksand_700Bold
-  })
+    Quicksand_700Bold,
+  });
 
   if (!fontsLoaded && !fontsError) {
     return null;
@@ -46,7 +53,6 @@ export default function App() {
           headerShown: false,
         }}
       >
-
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -90,7 +96,6 @@ export default function App() {
         />
 
         <Stack.Screen
-<<<<<<< HEAD
           name="codigoRecuperarSenha"
           component={CodigoRecuperarSenha}
           options={{ title: "CodigoRecuperarSenha" }}
@@ -99,33 +104,29 @@ export default function App() {
         <Stack.Screen
           name="atualizarSenha"
           component={atualizarSenha}
-          options={{title: "AtualizarSenha"}}
+          options={{ title: "AtualizarSenha" }}
         />
         <Stack.Screen
           name="cadastro"
           component={cadastro}
-          options={{title: "Cadastro"}}
+          options={{ title: "Cadastro" }}
         />
 
-      </Stack.Navigator>
-    </NavigationContainer>
-=======
+        <Stack.Screen
           name="home"
           component={Home}
-          options={{title: "Home"}}
+          options={{ title: "Home" }}
         />
-
-      </Stack.Navigator >
-    </NavigationContainer >
->>>>>>> origin/mat
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
