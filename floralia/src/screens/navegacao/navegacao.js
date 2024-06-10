@@ -23,6 +23,7 @@ export const Navegacao = ({ navigation }) => {
                 title="RecuperarSenha"
                 onPress={() => navigation.navigate("recuperarSenha")}
             />
+<<<<<<< HEAD
             <Button
                 title="CodigoRecuperarSenha"
                 onPress={() => navigation.navigate("codigoRecuperarSenha")}
@@ -37,6 +38,13 @@ export const Navegacao = ({ navigation }) => {
                 onPress={() => navigation.navigate("cadastro")}
             />
 
+=======
+             <Button
+                title="Home"
+                onPress={() => navigation.navigate("home")}
+            />
+           
+>>>>>>> origin/mat
         </View>
     )
 }
