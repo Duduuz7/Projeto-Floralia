@@ -11,23 +11,26 @@
   "dependencies": {
     "@expo-google-fonts/exo-2": "^0.2.3",
     "@expo-google-fonts/quicksand": "^0.2.3",
+    "@expo/metro-runtime": "~3.2.1",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
+    "axios": "^1.7.2",
+    "base-64": "^1.0.0",
     "expo": "~51.0.9",
     "expo-app-loading": "^2.1.1",
     "expo-font": "~12.0.6",
+    "expo-location": "^17.0.1",
+    "expo-notifications": "~0.28.7",
     "expo-status-bar": "~1.12.1",
+    "jwt-decode": "^4.0.0",
     "lottie-react-native": "^6.0.0-rc.5",
     "react": "18.2.0",
     "react-native": "0.74.1",
-<<<<<<< HEAD
-    "styled-components": "^6.1.11",
+    "react-native-maps": "^1.15.6",
+    "react-native-maps-directions": "^1.9.0",
     "react-native-web": "~0.19.10",
-    "@expo/metro-runtime": "~3.2.1"
-=======
-    "react-native-svg": "^15.3.0",
     "styled-components": "^6.1.11"
->>>>>>> origin/cat
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

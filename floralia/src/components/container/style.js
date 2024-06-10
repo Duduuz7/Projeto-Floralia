@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.SafeAreaView`
-<<<<<<< HEAD
     flex: 1;
     align-items: center;
     background-color: #fafafa;
-    gap: 15px;
-`
-=======
+    /* gap: 15px;
+
   flex: 1;
   align-items: center;
-  background-color: #fafafa;
+  background-color: #fafafa; */
   gap: 5px;
 `
 
@@ -65,4 +63,3 @@ export const ContainerProfile = styled.SafeAreaView`
   justify-content: center;
 `
 
->>>>>>> origin/cat

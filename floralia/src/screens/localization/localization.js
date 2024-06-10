@@ -1,21 +1,45 @@
-import { Text, Touchable, TouchableOpacity } from "react-native-web"
-import { Line, Maps } from "./style"
+import { Text, Touchable, TouchableOpacity, View } from "react-native"
+import { Line } from "./style"
+import Maps from "../../components/Maps/Maps";
 import { InputLinhaVerde } from "../../components/input/style"
 import { LinkRosa, TextInputVerde } from "../../components/text/style"
 import { Container } from "../../components/container/style"
 import { TitleVerde } from "../../components/title/style"
-import { ButtonVerde } from "../../components/button/style"
-import { ContainerModal, ModalContent } from "../../components/ModalTeste/style"
+
 import { useState } from "react"
 import { TitleButtonModal } from "../ModalEncomenda/StyledModalEncomenda"
-export const Localization = () => {
+import { HeaderProfile } from "../../components/header/style"
+import { LogoHeader } from "../../components/images/style"
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+export const Localization = ({ navigation }) => {
     const [visibleModal, setVisibleModal] = useState(false);
 
     return (
         <Container>
+            <HeaderProfile>
+
+                <View style={{ marginLeft: 14 }}>
+                    <Ionicons name="menu" size={30} color="#B83B5E" />
+                </View>
+
+                <LogoHeader
+                    source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
+                />
+
+                <View style={{ marginRight: 14 }}>
+                    <MaterialCommunityIcons name="cart-outline" size={28} color="#B83B5E" margin-left="12px" onPress={() => navigation.navigate("Carrinho")} />
+                </View>
+
+                {/* <MaterialCommunityIcons name="cart-remove" size={24} color="black" /> */}
+
+            </HeaderProfile>
+
             <Maps
-                source={require('../../assets/img/Maps.png')}
+              latitude={-23.5787632} longitude={-46.6819245}
             />
+
             <TitleVerde>Floralía</TitleVerde>
 
             <LinkRosa>Jardins, SP</LinkRosa>
