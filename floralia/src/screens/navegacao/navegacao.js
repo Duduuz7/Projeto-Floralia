@@ -37,6 +37,11 @@ export const Navegacao = ({ navigation }) => {
                 onPress={() => navigation.navigate("cadastro")}
             />
 
+             <Button
+                title="Home"
+                onPress={() => navigation.navigate("home")}
+            />
+           
         </View>
     )
 }

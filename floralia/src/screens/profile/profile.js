@@ -7,7 +7,7 @@ import { TitleVerde, TitleVerdeProfile } from "../../components/title/style"
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from "react"
-import { Card } from "../../components/cards/cardsEncomenda/carsEncomenda"
+import { Card } from "../../components/cards/cardsEncomenda/cardsEncomenda"
 import { Feather } from '@expo/vector-icons';
 
 export const Profile = ({ navigation }) => {

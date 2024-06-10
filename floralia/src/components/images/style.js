@@ -28,6 +28,10 @@ export const LogoCadastro = styled.Image`
     margin-bottom: 2px;
 `
 
+export const ImageProduct = styled.Image`
+    width: 80px;
+    height: 80px;
+`
 export const LogoHeader = styled.Image`
     width: 120px;
     height: 38px;
