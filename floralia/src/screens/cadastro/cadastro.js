@@ -8,56 +8,97 @@ import { TextButtonVerde } from "../../components/textbutton/style";
 import { TitleVerde } from "../../components/title/style";
 import { ViewSpace10px, ViewSpaceTop } from "../../components/views/style";
 import { InputLinha, InputLinhaSenha } from "../../components/inputFunction/inputFunction";
+import api from "../../services/services";
+import { ActivityIndicator, Alert, StatusBar, TouchableOpacity } from "react-native";
 
-export const cadastro = () => {
+export const cadastro = ({ navigation }) => {
 
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [confirmarSenha, setConfirmarSenha] = useState('');
   const [nome, setNome] = useState('');
 
   const [secure, setSecure] = useState(true);
 
-  const handleNome = () => {
-    setNome('');
+  const [loading, setLoading] = useState(false);
+
+
+  const handleCadastro = async () => {
+
+    setLoading(true);
+
+    try {
+
+      if (senha === confirmarSenha && senha.length >= 4) {
+
+        const form = new FormData()
+
+        form.append("nome", `${nome}`);
+        form.append("email", `${email}`);
+        form.append("senha", `${senha}`);
+
+        const response = await api.post('/Usuario', form, {
+
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+
+        }
+
+        );
+
+        if (response.data.success) {
+          throw new Error('Yeah');
+        }
+
+        setLoading(false)
+
+        navigation.replace("Login");
+
+
+      } else {
+
+        Alert.alert(
+          'Erro ao efetuar o cadastro !!',
+          'As senhas não coincidem, a senha precisa ter 4 digitos ou mais !!!',
+          [
+            { text: 'Ok' },
+          ]
+        );
+
+        setLoading(false)
+
+      }
+    } catch (error) {
+
+      // if (error.response) {
+      //     setLoading(false)
+      //     console.error('Erro ao cadastrar:', error.response.data);
+      // } else if (error.request) {
+      //     console.error('Erro de requisição:', error.request);
+      //     setLoading(false)
+      // } else {
+      //     console.error('Erro ao configurar:', error.message);
+      //     setLoading(false)
+      // }
+
+      setLoading(false)
+      console.log('caiu no catch', error);
+
+    }
   };
 
-  const handleChangeNome = (newText) => {
-    setNome(newText);
-  };
-
-
-  const [email, setEmail] = useState('');
-
-  const handleEmail = () => {
-    setEmail('');
-  };
-
-  const handleChangeEmail = (newText) => {
-    setEmail(newText);
-  };
-
-
-  const [senha, setSenha] = useState('');
-
-  const handleSenha = () => {
-    setSenha('');
-  };
-
-  const handleChangeSenha = (newText) => {
-    setSenha(newText);
-  };
-
-
-  const [confirmarSenha, setConfirmarSenha] = useState('');
-
-  const handleConfirmarSenha = () => {
-    setConfirmarSenha('');
-  };
-
-  const handleChangeConfirmarSenha = (newText) => {
-    setConfirmarSenha(newText);
-  };
 
   return (
+
     <Container>
+
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
+
       <ViewSpaceTop></ViewSpaceTop>
 
       <LogoCadastro source={require("../../assets/img/logoFloralia.png")} />
@@ -66,19 +107,15 @@ export const cadastro = () => {
 
       <InputLinha
         value={nome}
-        onFocus={handleNome}
-        onChangeText={handleChangeNome}
+        onChangeText={text => setNome(text)}
         placeholder="Nome"
       />
-       
-     
 
       <ViewSpace10px></ViewSpace10px>
 
       <InputLinha
         value={email}
-        onFocus={handleEmail}
-        onChangeText={handleChangeEmail}
+        onChangeText={text => setEmail(text)}
         placeholder="Email"
       />
 
@@ -87,8 +124,7 @@ export const cadastro = () => {
       <InputLinhaSenha
         onPress={() => { secure ? setSecure(false) : setSecure(true) }}
         value={senha}
-        onFocus={handleSenha}
-        onChangeText={handleChangeSenha}
+        onChangeText={text => setSenha(text)}
         secureTextEntry={secure}
         placeholder="Senha"
       />
@@ -97,22 +133,23 @@ export const cadastro = () => {
 
       <InputLinhaSenha
         onPress={() => { secure ? setSecure(false) : setSecure(true) }}
-        value={senha}
-        onFocus={handleSenha}
-        onChangeText={handleChangeSenha}
+        value={confirmarSenha}
+        onChangeText={text => setConfirmarSenha(text)}
         secureTextEntry={secure}
         placeholder="Senha"
       />
 
       {/* <ViewSpace10px></ViewSpace10px> */}
 
-      <ButtonVerde>
-        <TextButtonVerde>CADASTRAR</TextButtonVerde>
+      <ButtonVerde onPress={() => handleCadastro()}>
+        {loading ? <ActivityIndicator color={"#99004F"}/> : <TextButtonVerde>CADASTRAR</TextButtonVerde>}
       </ButtonVerde>
 
       <ViewSpace10px></ViewSpace10px>
 
-      <LinkRosaCod>Cancelar</LinkRosaCod>
+      <TouchableOpacity onPress={() => { navigation.replace("Login") }}>
+        <LinkRosaCod>Cancelar</LinkRosaCod>
+      </TouchableOpacity>
 
     </Container>
   );

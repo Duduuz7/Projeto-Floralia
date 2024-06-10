@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const Logo = styled.Image`
     width: 260px;
     height: 90px;
-    margin-top: 50%;
+    margin-top: 52%;
     margin-bottom: 2px;
 `
-<<<<<<< HEAD
 
 export const LogoAtualizar = styled.Image`
     width: 260px;
@@ -29,12 +28,10 @@ export const LogoCadastro = styled.Image`
     margin-bottom: 2px;
 `
 
-=======
 export const ImageProduct = styled.Image`
     width: 80px;
     height: 80px;
 `
->>>>>>> origin/mat
 export const LogoHeader = styled.Image`
     width: 120px;
     height: 38px;

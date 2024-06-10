@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Container, ViewNovoAqui } from "../../components/container/style";
 import { InputLinhaVerde } from "../../components/input/style";
 import {
@@ -27,7 +27,7 @@ import { useState } from "react";
 import { InputLinha, InputLinhaSenha } from "../../components/inputFunction/inputFunction";
 
 
-export const Login = () => {
+export const Login = ({ navigation }) => {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -54,6 +54,15 @@ export const Login = () => {
 
   return (
     <Container>
+
+
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
+
+
       <Logo
         source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
       />
@@ -76,7 +85,7 @@ export const Login = () => {
         placeholder="Senha"
       />
 
-      <TouchableOpacity >
+      <TouchableOpacity onPress={() => navigation.replace("recuperarSenha")}>
         <LinkRosa>Esqueceu sua senha?</LinkRosa>
       </TouchableOpacity>
 
@@ -91,8 +100,8 @@ export const Login = () => {
 
         <TextVerde>É novo aqui?</TextVerde>
 
-        <TouchableOpacity>
-          <LinkRosaConta>Crie sua conta agora!</LinkRosaConta>
+        <TouchableOpacity onPress={() => navigation.replace("cadastro")}>
+          <LinkRosaConta >Crie sua conta agora!</LinkRosaConta>
         </TouchableOpacity>
 
       </ViewNovoAqui>

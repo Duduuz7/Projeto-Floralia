@@ -11,33 +11,73 @@ import { TextButtonVerde } from "../../components/textbutton/style";
 import { TitleVerde } from "../../components/title/style";
 import { ViewSpace10px, ViewSpace15px, ViewSpaceTop } from "../../components/views/style";
 import { InputLinha, InputLinhaSenha } from "../../components/inputFunction/inputFunction";
+import { ActivityIndicator, Alert, StatusBar } from "react-native";
+import api from "../../services/services";
 
-export const atualizarSenha = () => {
+export const atualizarSenha = ({ navigation, route }) => {
 
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
   const [secure, setSecure] = useState(true);
 
-  const handleSenha = () => {
-    setSenha("");
-  };
-
-  const handleChangeSenha = (newText) => {
-    setSenha(newText);
-  };
+  const [loading, setLoading] = useState(false);
 
 
-  const [confirmarSenha, setConfirmarSenha] = useState("");
+  async function changePassword() {
+    if (senha !== confirmarSenha) {
 
-  const handleConfirmarSenha = () => {
-    setConfirmarSenha("");
-  };
+      setLoading(true)
 
-  const handleChangeConfirmarSenha = (newText) => {
-    setConfirmarSenha(newText);
-  };
+      Alert.alert(
+        'Erro ao prosseguir !!',
+        'A senha e sua confirmação não são iguais !!!',
+        [
+          { text: 'Ok' },
+        ]
+      );
+
+      setLoading(false)
+    }
+    else {
+
+      setLoading(true)
+
+      await api.put(`/Usuario/AlterarSenha?email=${route.params.emailRecuperacao}`, {
+          senhaNova: senha,
+        })
+        .then(() => {
+          navigation.replace("Login");
+          setLoading(false)
+        })
+        .catch((error) => {
+          console.log(error);
+
+          Alert.alert(
+            'Erro ao prosseguir !!',
+            'Por favor preencha o campo !!!',
+            [
+              { text: 'Ok' },
+            ]
+          );
+
+          setLoading(false)
+          // console.log(
+          //   `$/Usuario/AlterarSenha?email=${route.params.emailRecuperacao}`
+          // );
+        });
+    }
+  }
+
+
 
   return (
     <Container>
+
+      {/* <StatusBar
+          translucent
+          backgroundColor="transparent"
+          barStyle="dark-content"
+        /> */}
 
       <ViewSpaceTop></ViewSpaceTop>
 
@@ -51,29 +91,44 @@ export const atualizarSenha = () => {
         Insira e confirme sua nova senha abaixo !
       </TextoQuicksandMedium>
 
-      <InputLinha
-        value={senha}
-        onFocus={handleSenha}
-        onChangeText={handleChangeSenha}
-        placeholder="Senha"
-      />
-
-      <ViewSpace10px></ViewSpace10px>
-
       <InputLinhaSenha
         onPress={() => { secure ? setSecure(false) : setSecure(true) }}
         value={senha}
-        onFocus={handleSenha}
-        onChangeText={handleChangeSenha}
+        onChangeText={text => setSenha(text)}
         secureTextEntry={secure}
         placeholder="Senha"
       />
 
-      <ViewSpace10px></ViewSpace10px>
+      {/* <ViewSpace10px></ViewSpace10px> */}
 
-      <ButtonVerde>
-        <TextButtonVerde>CONFIRMAR</TextButtonVerde>
+      <InputLinhaSenha
+        onPress={() => { secure ? setSecure(false) : setSecure(true) }}
+        value={confirmarSenha}
+        onChangeText={text => setConfirmarSenha(text)}
+        secureTextEntry={secure}
+        placeholder="Confirmar Senha"
+      />
+
+      {/* <ViewSpace10px></ViewSpace10px> */}
+
+      <ButtonVerde
+        onPress={() => {
+          changePassword();
+          senha, confirmarSenha != null
+            ? changePassword()
+            : Alert.alert(
+              'Erro ao prosseguir !!',
+              'Por favor preencha o campo !!!',
+              [
+                { text: 'Ok' },
+              ]
+            );
+        }}
+      >
+        {loading ? <ActivityIndicator color={"#99004F"} /> : <TextButtonVerde>CONFIRMAR</TextButtonVerde>}
       </ButtonVerde>
+
     </Container>
   );
-};
+}
+

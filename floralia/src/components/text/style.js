@@ -17,11 +17,16 @@ export const LinkRosa = styled(TextInputVerde)`
 export const LinkRosaConta = styled(LinkRosa)`
     margin-left: 5px;
     margin-top: 0px;
-    margin-right: 0px
+    margin-right: 0px;
 `
 
 export const LinkRosaCod = styled(LinkRosa)`
     margin-right: 0px;
+`
+
+export const LinkRosaReenviar = styled(LinkRosa)`
+    margin-right: 0px;
+    margin-top: 7px;
 `
 
 export const TextVerde = styled.Text`

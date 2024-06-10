@@ -4,7 +4,7 @@ import { Container } from "../../components/container/style";
 import { Logo, LogoRecuperar } from "../../components/images/style";
 import { InputLinhaVerde } from "../../components/input/style";
 import {
-    LinkRosa,
+  LinkRosa,
   LinkRosaCod,
   TextInputVerde,
   TextoQuicksandMedium,
@@ -12,49 +12,96 @@ import {
 import { TextButtonVerde } from "../../components/textbutton/style";
 import { TitleVerde } from "../../components/title/style";
 import { ViewSpace, ViewSpaceTop } from "../../components/views/style";
-export const recuperarSenha = () => {
+import { ActivityIndicator, Alert, StatusBar, TouchableOpacity } from "react-native";
+import api from "../../services/services";
+
+
+
+export const recuperarSenha = ({ navigation }) => {
 
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleEmail = () => {
-    setEmail("");
-  };
 
-  const handleChangeEmail = (newText) => {
-    setEmail(newText);
-  };
+  async function sendEmail() {
+    try {
+
+      setLoading(true)
+
+      await api.post(`/RecuperarSenha?email=${email}`);
+
+      navigation.replace("codigoRecuperarSenha", { emailRecuperacao: email });
+
+      setLoading(false)
+
+    } catch (error) {
+
+      console.log(error);
+
+      Alert.alert(
+        'Erro ao prosseguir !!',
+        'Preencha o campo de email com o seu email para prosseguir !!!',
+        [
+          { text: 'Ok' },
+        ]
+      );
+
+      setLoading(false);
+
+    }
+  }
+
 
   return (
     <Container>
+
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
 
       <ViewSpaceTop></ViewSpaceTop>
 
       <LogoRecuperar source={require("../../assets/img/logoFloralia.png")} />
 
       <TitleVerde>Recuperação de senha</TitleVerde>
-      
+
       <ViewSpace></ViewSpace>
 
       <TextoQuicksandMedium>
-        Deigite abaixo seu email para receber o código de rcuperação de senha !
+        Digite abaixo seu email para receber o código de recuperação de senha !
       </TextoQuicksandMedium>
 
 
       <InputLinhaVerde
         value={email}
-        onFocus={handleEmail}
-        onChangeText={handleChangeEmail}
+        onChangeText={(text) => setEmail(text)}
         placeholder="Email"
       />
 
-      <ButtonVerde>
-        <TextButtonVerde>CONTINUAR</TextButtonVerde>
+      <ButtonVerde onPress={
+        () => {
+          email != null
+            ? sendEmail()
+            : Alert.alert(
+              'Erro ao prosseguir !!',
+              'Preencha o campo de email !!!',
+              [
+                { text: 'Ok' },
+              ]
+            );
+        }
+      }>
+        {loading ? <ActivityIndicator color={"#99004F"}/> : <TextButtonVerde>CONTINUAR</TextButtonVerde>}
       </ButtonVerde>
 
-      {/* <LinkRosaCod>Cancelar</LinkRosaCod> */}
       <ViewSpace></ViewSpace>
 
-      <LinkRosaCod>Cancelar</LinkRosaCod>
+      <TouchableOpacity onPress={() => { navigation.replace("Login") }}>
+        <LinkRosaCod>Cancelar</LinkRosaCod>
+      </TouchableOpacity>
+
     </Container>
   );
 };

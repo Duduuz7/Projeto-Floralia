@@ -63,7 +63,7 @@ export const FlatContainerHome = styled.FlatList`
   /* align-items: center; */
   flex-wrap: wrap;
   padding: 10px;
-  height: 75%
+  height: 75%;
 `
 
 export const HrProfile = styled.SafeAreaView`
@@ -81,7 +81,6 @@ export const BackgroundIcon = styled.SafeAreaView`
   align-items: center;
   border-radius: 70px;
   justify-content: center;
-<<<<<<< HEAD
     flex: 1;
     align-items: center;
     background-color: #fafafa;
@@ -94,7 +93,5 @@ export const ViewNovoAqui = styled.View`
   justify-content: center;
   margin-top: 30px;
 `
-=======
-`
 
->>>>>>> origin/mat
+
