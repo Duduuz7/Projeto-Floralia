@@ -1,8 +1,36 @@
 import styled from "styled-components";
 
 export const Logo = styled.Image`
-    width: 222px;
-    height: 78px;
+    width: 260px;
+    height: 90px;
+    margin-top: 50%;
+    margin-bottom: 2px;
+`
+
+export const LogoAtualizar = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 30%;
+    margin-bottom: 2px;
+`
+
+export const LogoRecuperar = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 35%;
+    margin-bottom: 2px;
+`
+
+export const LogoCadastro = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 15%;
+    margin-bottom: 2px;
+`
+
+export const ImageProduct = styled.Image`
+    width: 80px;
+    height: 80px;
 `
 export const LogoHeader = styled.Image`
     width: 120px;

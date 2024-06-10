@@ -1,7 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { Container, ContainerProfile, FlatContainer, HrProfile } from '../../components/container/style';

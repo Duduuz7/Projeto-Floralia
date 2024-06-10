@@ -1,22 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Navegacao } from './src/screens/navegacao/navegacao';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
 import Splash from './src/screens/splash/splash';
 import { Profile } from './src/screens/profile/profile';
 import { Login } from './src/screens/login/login';
 import { recuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
-import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
-import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
+import { StyleSheet, Text, View } from "react-native";
+import {
+  useFonts,
+  Exo2_400Regular,
+  Exo2_500Medium,
+  Exo2_600SemiBold,
+  Exo2_700Bold,
+} from "@expo-google-fonts/exo-2";
+import {
+  Quicksand_300Light,
+  Quicksand_400Regular,
+  Quicksand_500Medium,
+  Quicksand_600SemiBold,
+  Quicksand_700Bold,
+} from "@expo-google-fonts/quicksand";
+import { cadastro } from "./src/screens/cadastro/cadastro";
+import { Home } from "./src/screens/home/home";
+import { NavigationContainer } from '@react-navigation/native';
+import { Navegacao } from './src/screens/navegacao/navegacao';
 import { Favoritos } from './src/screens/favoritos/favoritos';
 import { Carrinho } from './src/screens/carrinho/carrinho';
 import { ResultadoPesquisa } from './src/screens/resultadoPesquisa/resultadoPesquisa';
+import { CodigoRecuperarSenha } from './src/screens/codigoRecuperarSenha/codigoRecuperarSenha';
+import { atualizarSenha } from './src/screens/atualizarSenha/atualizarSenha';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [fontsLoaded, fontsError] = useFonts({
     Exo2_400Regular,
     Exo2_500Medium,
@@ -25,8 +40,8 @@ export default function App() {
     Quicksand_400Regular,
     Quicksand_500Medium,
     Quicksand_600SemiBold,
-    Quicksand_700Bold
-  })
+    Quicksand_700Bold,
+  });
 
   if (!fontsLoaded && !fontsError) {
     return null;
@@ -34,8 +49,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen
           name="Splash"
           component={Splash}
@@ -84,16 +102,38 @@ export default function App() {
           options={{ title: "ResultadoPesquisa" }}
         />
 
-      </Stack.Navigator >
-    </NavigationContainer >
+        <Stack.Screen
+          name="codigoRecuperarSenha"
+          component={CodigoRecuperarSenha}
+          options={{ title: "CodigoRecuperarSenha" }}
+        />
+
+        <Stack.Screen
+          name="atualizarSenha"
+          component={atualizarSenha}
+          options={{ title: "AtualizarSenha" }}
+        />
+        <Stack.Screen
+          name="cadastro"
+          component={cadastro}
+          options={{ title: "Cadastro" }}
+        />
+
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{ title: "Home" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

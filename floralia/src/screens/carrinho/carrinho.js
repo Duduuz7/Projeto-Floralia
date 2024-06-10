@@ -76,9 +76,9 @@ export const Carrinho = ({ navigation }) => {
 
             />
 
-            <FooterContainer>
+            {/* <FooterContainer>
                 
-            </FooterContainer>
+            </FooterContainer> */}
 
         </Container>
 

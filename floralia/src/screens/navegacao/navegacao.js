@@ -1,8 +1,12 @@
 import { View, Button } from "react-native"
+import { TitleVerde } from "../../components/title/style"
 
-export const Navegacao = ({navigation}) => {
-    return(
-        <View>
+export const Navegacao = ({ navigation }) => {
+    return (
+        <View style={{ marginTop: 0 }}>
+
+<TitleVerde>ooooooooi</TitleVerde>
+
             <Button
                 title="Login"
                 onPress={() => navigation.navigate("Login")}
@@ -19,13 +23,30 @@ export const Navegacao = ({navigation}) => {
                 title="Carrinho"
                 onPress={() => navigation.navigate("Carrinho")}
             />
-             <Button
+            <Button
                 title="RecuperarSenha"
                 onPress={() => navigation.navigate("recuperarSenha")}
             />
             <Button
                 title="ResultadoPesquisa"
                 onPress={() => navigation.navigate("ResultadoPesquisa")}
+            />
+            <Button
+                title="CodigoRecuperarSenha"
+                onPress={() => navigation.navigate("codigoRecuperarSenha")}
+            />
+            <Button
+                title="AtualizarSenha"
+                onPress={() => navigation.navigate("atualizarSenha")}
+            />
+            <Button
+                title="Cadastro"
+                onPress={() => navigation.navigate("cadastro")}
+            />
+
+             <Button
+                title="Home"
+                onPress={() => navigation.navigate("home")}
             />
            
         </View>
