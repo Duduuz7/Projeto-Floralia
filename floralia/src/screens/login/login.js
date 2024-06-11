@@ -71,8 +71,9 @@ export const Login = ({ navigation }) => {
     try {
       const response = await api.post("/Login", { email, senha });
       await AsyncStorage.setItem("token", JSON.stringify(response.data));
-      // navigation.navigate("Main");
-      console.log(email);
+      navigation.navigate("Favoritos");
+      // console.log(email);
+      console.log(response.data);
       alert("logou");
     } catch (error) {
       console.log(error);
@@ -96,9 +97,9 @@ export const Login = ({ navigation }) => {
 
       <InputLinha
         value={email}
-        onFocus={handleEmail}
+        
         onChangeText={(event) => setEmail(event)}
-        placeholder= {email}
+        placeholder= "email"
       />
 
       <InputLinhaSenha
@@ -106,10 +107,10 @@ export const Login = ({ navigation }) => {
           secure ? setSecure(false) : setSecure(true);
         }}
         value={senha}
-        onFocus={handleSenha}
+       
         onChangeText={(txt) => setSenha(txt)}
         secureTextEntry={secure}
-        placeholder={senha}
+        placeholder="senha"
       />
 
       <TouchableOpacity>

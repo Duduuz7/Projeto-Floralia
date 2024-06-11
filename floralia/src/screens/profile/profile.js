@@ -37,6 +37,8 @@ export const Profile = ({ navigation }) => {
 
     // }, [photo])
 
+
+
     return (
         <ScrollView>
             <Container>

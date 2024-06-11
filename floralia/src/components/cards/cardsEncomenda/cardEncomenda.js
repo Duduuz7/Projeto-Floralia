@@ -15,6 +15,22 @@ export const Card = ({
     dataEncomenda,
 }) => {
 
+    const [cancelarEncomenda, setCancelarEncomenda] = useState()
+
+
+    async function CancelarEncomenda() {
+
+        await api.put(`/Encomenda?id=${token.idUsuario}`).then(response => {
+
+            setCancelarEncomenda(response.data)
+            console.log(response.data);
+
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
     const Check = () => {
         if (status === "Pendente") {
             return (
@@ -24,7 +40,7 @@ export const Card = ({
 
                         {/* <AntDesign name="close" size={24} color="#B80000" /> */}
 
-                        <Ionicons name="close" size={32} color="#B80000" />
+                        <Ionicons name="close" size={32} color="#B80000" onPress={CancelarEncomenda()} />
 
                     </BackgroundIcon>
                 </View >

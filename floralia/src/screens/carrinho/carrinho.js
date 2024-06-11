@@ -11,23 +11,33 @@ import { Card } from "../../components/cards/cardsEncomenda/cardEncomenda"
 import { CardProduto } from "../../components/cards/cardFavoritos/cardFavoritos"
 import { CardCarrinho } from "../../components/cards/cardCarrinho/cardCarrinho"
 import { ButtonGreenCart } from "../../components/button/style"
+import api from "../../services/services"
 
 
 export const Carrinho = ({ navigation }) => {
 
-    // const [carrinho, setCarrinho] = useState([
-    //     { name: 'Buque de rosas', id: '1', status: 'Pendente', precoProduto: '389,90' },
-    //     { name: 'Buque de flores', id: '2', status: 'Recebido', precoProduto: '389,90' },
-    //     { name: 'Buque de lirios', id: '3', status: 'Cancelado', precoProduto: '389,90' },
-    //     { name: 'Buque de lirios', id: '4', status: 'pendente', precoProduto: '389,90' },
-    // ]);
-
     const [listaCarrinho, setListaCarrinho] = useState([])
 
-    async function listarCarrinho() {
+    const [token, setToken] = useState({})
+
+    async function ProfileLoad() {
+        const tokenDecode = await userDecodeToken();
+
+        if (tokenDecode != null) {
+            setToken(tokenDecode)
+
+            ListarCarrinho(tokenDecode.user)
+        }
+    }
+
+    useEffect(() => {
+        ProfileLoad();
+    }, []);
+
+    async function ListarCarrinho() {
 
         // console.log(`/Carrinho?id=${token.idUsuario}`);
-        await api.get(`/Carrinho?id=${token.idUsuario}`).then(response => {
+        await api.get(`/Carrinho?idUsuario=${token.user}`).then(response => {
 
             setListaCarrinho(response.data)
             console.log(response.data);
@@ -37,9 +47,6 @@ export const Carrinho = ({ navigation }) => {
         })
     }
 
-    useEffect(()=> {
-        listarCarrinho();
-    },[])
 
     return (
         <Container>
@@ -64,7 +71,7 @@ export const Carrinho = ({ navigation }) => {
 
             <FlatContainer
                 keyExtractor={(item) => item.id}
-                data={listarCarrinho()}
+                data={listaCarrinho}
                 renderItem={({ item }) => (
                     <CardCarrinho
                         navigation={navigation}

@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { ActivityIndicator, View } from "react-native"
 import { Container, FlatContainer, HrProfile } from "../../components/container/style"
 import { Header } from "../../components/header/style"
 import { LogoHeader } from "../../components/images/style"
@@ -7,26 +7,36 @@ import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useEffect, useState } from "react"
 import { CardProduto } from "../../components/cards/cardFavoritos/cardFavoritos"
+import { userDecodeToken } from "../../utils/Auth"
+import api from "../../services/services"
 
 
 export const Favoritos = ({ navigation }) => {
 
-    // const [favoritos, setFavoritos] = useState([
-    //     { name: 'Buque de rosas', id: '1', status: 'Pendente', precoProduto: '389,90' },
-    //     { name: 'Buque de flores', id: '2', status: 'Recebido', precoProduto: '389,90' },
-    //     { name: 'Buque de lirios', id: '3', status: 'Cancelado', precoProduto: '389,90' },
-    //     { name: 'Buque de lirios', id: '4', status: 'pendente', precoProduto: '389,90' },
-    // ]);
+    const [listaFavoritos, setListaFavoritos] = useState([])
 
-    const [listaFavoritos, setListaFavoritos] = useState([]) 
+    const [token, setToken] = useState({})
 
-    async function ListarFavoritos() {
+    async function ProfileLoad() {
+        const tokenDecode = await userDecodeToken();
 
-        // console.log(`/Favorito/BuscarPorIdUsuario?id=${token.idUsuario}`);
-        await api.get(`/Favorito/BuscarPorIdUsuario?id=${token.idUsuario}`).then(response => {
+        if (tokenDecode != null) {
+            setToken(tokenDecode)
+
+            ListarFavoritos(tokenDecode.user)
+        }
+    }
+
+    useEffect(() => {
+        ProfileLoad();
+    }, []);
+
+    async function ListarFavoritos(user) {
+        console.log(`/Favorito/BuscarPorIdUsuario?id=${user}`);
+        await api.get(`/Favorito/BuscaPorIdUsuario?idUsuario=${user}`).then(response => {
 
             setListaFavoritos(response.data)
-            console.log(response.data);
+            // console.log(response.data);
 
         }).catch(error => {
             console.log(error);
@@ -34,9 +44,32 @@ export const Favoritos = ({ navigation }) => {
 
     }
 
-    useEffect(()=> {
-        ListarFavoritos();
-    },[])
+
+
+    //passar o idProduto pelo modal
+    async function AdicionarFavorito(){
+        await api.post(`/Favorito`, {idUsuario:token.user, idProduto:idProduto}).then(response => {
+
+            
+            console.log(response.data);
+
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
+
+
+    //passar os Ids pelo modal
+    async function CriarEncomenda(){
+        await api.post(`/Encomenda`, {idUsuario:token.user, idProduto:idProduto, statusEncomenda:statusEncomenda, dataEncomenda:dataEncomenda}).then(response => {
+
+            console.log(response.data);
+
+        }).catch(error => {
+            console.log(error);
+        })
+    }
 
     return (
         <Container>
@@ -60,11 +93,12 @@ export const Favoritos = ({ navigation }) => {
 
             <FlatContainer
                 keyExtractor={(item) => item.id}
-                data={ListarFavoritos()}
+                data={listaFavoritos}
                 renderItem={({ item }) => (
                     <CardProduto
                         navigation={navigation}
-                        name={item.name}
+                        name={item.Nome}
+                        idFavorito={item.id}
                         status={item.status}
                         precoProduto={item.precoProduto}
                     />

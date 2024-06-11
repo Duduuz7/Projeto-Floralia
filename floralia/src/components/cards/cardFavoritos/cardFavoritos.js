@@ -7,9 +7,27 @@ import { BackgroundIcon } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
 
 export const CardProduto = ({
+    idFavorito,
     name,
     precoProduto,
 }) => {
+
+    
+
+    
+
+    //passar o id do favorito pelo modal
+    async function DeletarFavorito() {
+
+        await api.delete(`/Favorito?id=${idFavorito}`).then(response => {
+
+            console.log(response.data);
+
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
 
     return (
         
@@ -38,7 +56,7 @@ export const CardProduto = ({
 
                 <View style={{ marginTop: 24, marginLeft: 17 }}>
                     <BackgroundIcon>
-                        <Ionicons name="heart-dislike-outline" size={26} color="#B83B5E" />
+                        <Ionicons name="heart-dislike-outline" size={26} color="#B83B5E" onPress={()=>DeletarFavorito()} />
                     </BackgroundIcon>
                 </View >
                 {/* </CardContainerItem> */}
