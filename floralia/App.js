@@ -6,12 +6,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import Splash from './src/screens/splash/splash';
 import { Profile } from './src/screens/profile/profile';
 import { Login } from './src/screens/login/login';
-import { recuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
+import { RecuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
 import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { Favoritos } from './src/screens/favoritos/favoritos';
 import { Carrinho } from './src/screens/carrinho/carrinho';
 import { Home } from './src/screens/home/home';
+import { Main } from './src/screens/main/main';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -35,7 +37,8 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+
+      <Stack.Navigator screenOptions={ headerShown=false }>
 
         <Stack.Screen
           name="Splash"
@@ -43,10 +46,16 @@ export default function App() {
           options={{ title: "Splash" }}
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Navegacao"
           component={Navegacao}
           options={{ title: "Navegação" }}
+        /> */}
+
+        <Stack.Screen
+          name='Main'
+          component={Main}
+          options={{ title: "Main", headerShown: false }}
         />
 
         <Stack.Screen
@@ -58,34 +67,35 @@ export default function App() {
         <Stack.Screen
           name="Profile"
           component={Profile}
-          options={{title: "Profile"}}
+          options={{ title: "Profile" }}
         />
 
         <Stack.Screen
           name="Favoritos"
           component={Favoritos}
-          options={{title: "Favoritos"}}
+          options={{ title: "Favoritos" }}
         />
 
         <Stack.Screen
           name="Carrinho"
           component={Carrinho}
-          options={{title: "Carrinho"}}
+          options={{ title: "Carrinho" }}
         />
 
         <Stack.Screen
-          name="recuperarSenha"
-          component={recuperarSenha}
-          options={{title: "RecuperarSenha"}}
+          name="RecuperarSenha"
+          component={RecuperarSenha}
+          options={{ title: "RecuperarSenha" }}
         />
 
         <Stack.Screen
           name="home"
           component={Home}
-          options={{title: "Home"}}
+          options={{ title: "Home" }}
         />
 
       </Stack.Navigator >
+
     </NavigationContainer >
   );
 }

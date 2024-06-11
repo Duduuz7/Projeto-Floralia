@@ -9,7 +9,7 @@ import {
 } from "../../components/text/style";
 import { TextButtonVerde } from "../../components/textbutton/style";
 import { TitleVerde } from "../../components/title/style";
-export const recuperarSenha = () => {
+export const RecuperarSenha = () => {
   return (
     <Container>
       <Logo source={require("../../assets/img/logoFloralia.svg")} />

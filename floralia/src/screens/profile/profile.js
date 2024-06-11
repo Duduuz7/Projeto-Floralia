@@ -38,7 +38,7 @@ export const Profile = ({ navigation }) => {
     // }, [photo])
 
     return (
-    <ScrollView>
+    // <ScrollView>
         <Container>
 
             <HeaderProfile>
@@ -92,6 +92,6 @@ export const Profile = ({ navigation }) => {
 
             
         </Container>
-    </ScrollView>
+    // </ScrollView>
     )
 }

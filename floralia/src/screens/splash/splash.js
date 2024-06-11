@@ -11,9 +11,9 @@ export default function Splash({ navigation }) {
     setTimeout(() => {
       navigation.dispatch(CommonActions.reset({
         index: 0,
-        routes: [{ name: 'Navegacao' }]
+        routes: [{ name: 'Main' }]
       }))
-    }, 1000);
+    }, 2000);
   })
 
   return (

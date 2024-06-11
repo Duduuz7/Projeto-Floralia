@@ -1,15 +1,19 @@
+import { TouchableOpacity } from "react-native"
 import { ContainerCardHome, ContainerDescription } from "../../container/style"
 import { ImageProduct } from "../../images/style"
 import { TextNameProduct, TextPrice } from "../../text/style"
 
-export const CardHome = ({nome, preco, imagem}) => {
+export const CardHome = ({ nome, preco, imagem, onpressProduct }) => {
 
-    return(
+    return (
         <ContainerCardHome>
-            <ImageProduct source={{uri: imagem}}/>
+            <TouchableOpacity onPress={onpressProduct}>
+                <ImageProduct source={{ uri: imagem }} />
+            </TouchableOpacity>
+            
 
             <ContainerDescription>
-                <TextNameProduct>{nome}</TextNameProduct>
+                <TextNameProduct>{nome.length > 14 ? nome.substring(0, 14) + "..." : nome}</TextNameProduct>
                 <TextPrice>R$: {preco}</TextPrice>
             </ContainerDescription>
         </ContainerCardHome>

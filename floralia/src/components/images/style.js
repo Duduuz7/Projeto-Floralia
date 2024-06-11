@@ -11,12 +11,19 @@ export const ImageProduct = styled.Image`
 export const LogoHeader = styled.Image`
     width: 120px;
     height: 38px;
+    
 `
+// export const LogoHeaderCarrinho = styled.Image`
+//     width: 120px;
+//     height: 38px;
+    
+// `
 
 export const LogoHeaderCarrinho = styled(LogoHeader)`
     width: 120px;
     height: 38px;
-    margin-right: 130px;
+    position: absolute;
+    left: 35%;
 `
 
 export const MenuHamburguer = styled.Image`
