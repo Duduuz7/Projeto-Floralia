@@ -28,7 +28,7 @@ import {
 } from "../../components/inputFunction/inputFunction";
 
 export const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("gui@email.com");
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("12345");
   const [loading, setLoading] = useState(false);
   const [secure, setSecure] = useState(true);
@@ -96,9 +96,9 @@ export const Login = ({ navigation }) => {
 
       <InputLinha
         value={email}
-        onFocus={handleEmail}
+        
         onChangeText={(event) => setEmail(event)}
-        placeholder= {email}
+        placeholder= "Email"
       />
 
       <InputLinhaSenha
@@ -106,10 +106,9 @@ export const Login = ({ navigation }) => {
           secure ? setSecure(false) : setSecure(true);
         }}
         value={senha}
-        onFocus={handleSenha}
         onChangeText={(txt) => setSenha(txt)}
         secureTextEntry={secure}
-        placeholder={senha}
+        placeholder="Senha"
       />
 
       <TouchableOpacity>
