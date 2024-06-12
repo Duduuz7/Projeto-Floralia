@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
 import { Container, FlatContainer, FooterContainer, TextContainerCart } from "../../components/container/style";
-import { Header, HeaderCarrinho } from "../../components/header/style";
-import { LogoHeaderCarrinho } from "../../components/images/style";
 import { CardPreco, TitleVerde } from "../../components/title/style";
-import { Ionicons } from '@expo/vector-icons';
 import { CardCarrinho } from "../../components/cards/cardCarrinho/cardCarrinho";
 import { ButtonGreenCart } from "../../components/button/style";
 import api from "../../services/services";
-import { TextButtonVerde, TextButtonVerdeCard, TextButtonVerdeCart } from "../../components/textbutton/style";
+import { TextButtonVerdeCart } from "../../components/textbutton/style";
+import { HeaderComponentCarrinho } from "../../components/header/header"
 
 export const Carrinho = ({ navigation }) => {
     const [listaCarrinho, setListaCarrinho] = useState([]);
@@ -49,14 +46,10 @@ export const Carrinho = ({ navigation }) => {
 
     return (
         <Container>
-            <Header>
-                <View style={{ marginLeft: 14 }}>
-                    <Ionicons name="menu" size={30} color="#B83B5E" />
-                </View>
-                <LogoHeaderCarrinho
-                    source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
-                />
-            </Header>
+
+            <HeaderComponentCarrinho
+                navigation={navigation}
+            />
 
             <TitleVerde>Carrinho</TitleVerde>
 
