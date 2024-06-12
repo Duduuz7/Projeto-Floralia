@@ -104,16 +104,17 @@ export const BackgroundIcon = styled.SafeAreaView`
 export const FooterContainer = styled.SafeAreaView`
   height: 100px;
   width: 100%;
-  background-color: #fff;
-  justify-content: center;
+  border-top-width: 1px;
+  border-color: #817878;
+
+/* math pode arrumar isso aki eu sei q ta feiao mas tentei...... */
+  box-shadow: 1px 1px 3px #00000080;
+
   align-items: center;
-  elevation: 44px;
-  border:2px;
-  border-color: black;
-  flex: 1;
-  align-items: center;
-  background-color: #fafafa;
-  gap: 5px;
+  justify-content: space-around;
+  flex-direction:row;
+
+
 `;
 
 export const ContainerSecure = styled.View`
@@ -131,4 +132,10 @@ export const ViewNovoAqui = styled.View`
   margin-top: 30px;
 `;
 
+export const TextContainerCart = styled.SafeAreaView`
+  width: 100px;
+  height: 80px;
+  margin-left: 8%;
+
+`
 

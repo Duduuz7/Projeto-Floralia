@@ -1,32 +1,26 @@
-import { View } from "react-native"
-import { Container, FlatContainer, FooterContainer } from "../../components/container/style"
-import { Header, HeaderCarrinho } from "../../components/header/style"
-import { LogoHeader, LogoHeaderCarrinho } from "../../components/images/style"
-import { TitleVerde } from "../../components/title/style"
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
+import { Container, FlatContainer, FooterContainer, TextContainerCart } from "../../components/container/style";
+import { Header, HeaderCarrinho } from "../../components/header/style";
+import { LogoHeaderCarrinho } from "../../components/images/style";
+import { CardPreco, TitleVerde } from "../../components/title/style";
 import { Ionicons } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useEffect, useState } from "react"
-import { Favoritos } from "../favoritos/favoritos"
-import { Card } from "../../components/cards/cardsEncomenda/cardEncomenda"
-import { CardProduto } from "../../components/cards/cardFavoritos/cardFavoritos"
-import { CardCarrinho } from "../../components/cards/cardCarrinho/cardCarrinho"
-import { ButtonGreenCart } from "../../components/button/style"
-import api from "../../services/services"
-
+import { CardCarrinho } from "../../components/cards/cardCarrinho/cardCarrinho";
+import { ButtonGreenCart } from "../../components/button/style";
+import api from "../../services/services";
+import { TextButtonVerde, TextButtonVerdeCard, TextButtonVerdeCart } from "../../components/textbutton/style";
 
 export const Carrinho = ({ navigation }) => {
-
-    const [listaCarrinho, setListaCarrinho] = useState([])
-
-    const [token, setToken] = useState({})
+    const [listaCarrinho, setListaCarrinho] = useState([]);
+    const [token, setToken] = useState({});
+    const [total, setTotal] = useState(0);
 
     async function ProfileLoad() {
         const tokenDecode = await userDecodeToken();
 
         if (tokenDecode != null) {
-            setToken(tokenDecode)
-
-            ListarCarrinho(tokenDecode.user)
+            setToken(tokenDecode);
+            ListarCarrinho(tokenDecode.user);
         }
     }
 
@@ -34,37 +28,34 @@ export const Carrinho = ({ navigation }) => {
         ProfileLoad();
     }, []);
 
-    async function ListarCarrinho() {
+    useEffect(() => {
+        calcularTotal();
+    }, [listaCarrinho]);
 
-        // console.log(`/Carrinho?id=${token.idUsuario}`);
-        await api.get(`/Carrinho?idUsuario=${token.user}`).then(response => {
-
-            setListaCarrinho(response.data)
+    async function ListarCarrinho(user) {
+        try {
+            const response = await api.get(`/Carrinho?idUsuario=${user}`);
+            setListaCarrinho(response.data);
             console.log(response.data);
-
-        }).catch(error => {
+        } catch (error) {
             console.log(error);
-        })
+        }
     }
 
+    function calcularTotal() {
+        const total = listaCarrinho.reduce((sum, item) => sum + item.precoProduto, 0);
+        setTotal(total);
+    }
 
     return (
         <Container>
             <Header>
-
                 <View style={{ marginLeft: 14 }}>
                     <Ionicons name="menu" size={30} color="#B83B5E" />
                 </View>
-
                 <LogoHeaderCarrinho
                     source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
                 />
-
-                {/* <View style={{ marginRight: 14 }}>
-                    <MaterialCommunityIcons name="cart-outline" size={37} color="#B83B5E" margin-left="12px" />
-                </View> */}
-
-
             </Header>
 
             <TitleVerde>Carrinho</TitleVerde>
@@ -80,14 +71,20 @@ export const Carrinho = ({ navigation }) => {
                         precoProduto={item.precoProduto}
                     />
                 )}
-
             />
 
-            {/* <FooterContainer>
-                
-            </FooterContainer> */}
+            <FooterContainer>
+
+                <TextContainerCart>
+                    <TitleVerde>TOTAL: <CardPreco> R$: {total.toFixed(2)} </CardPreco> </TitleVerde>
+                </TextContainerCart>
+
+                <ButtonGreenCart>
+                    <TextButtonVerdeCart>Finalize sua encomenda</TextButtonVerdeCart>
+                </ButtonGreenCart>
+
+            </FooterContainer>
 
         </Container>
-
-    )
-}
+    );
+};

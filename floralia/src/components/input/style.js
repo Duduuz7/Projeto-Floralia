@@ -43,3 +43,7 @@ export const InputSearch = styled(InputLinhaVerde)`
   align-items: center;
   padding-left: 10px;
 `;
+
+
+
+
