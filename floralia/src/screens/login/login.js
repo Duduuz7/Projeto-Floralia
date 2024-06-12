@@ -34,29 +34,14 @@ export const Login = ({ navigation }) => {
   const [secure, setSecure] = useState(true);
   const [press, setPress] = useState(false);
 
-  const handleEmail = () => {
-    setEmail("");
-  };
 
-  const handleChangeEmail = () => {
-    setEmail();
-  };
+  // const ForgotSenha = () => {
+  //   navigation.navigate("recuperarSenha");
+  // };
 
-  const handleSenha = () => {
-    setSenha();
-  };
-
-  const handleChangeSenha = () => {
-    setSenha();
-  };
-
-  const ForgotSenha = () => {
-    navigation.navigate("recuperarSenha");
-  };
-
-  const LinkCadastro = () => {
-    navigation.navigate("cadastro");
-  };
+  // const LinkCadastro = () => {
+  //   navigation.navigate("cadastro");
+  // };
 
   async function LoginFunct() {
     if (!email || !senha) {
