@@ -28,6 +28,11 @@ import {
   TextFoto,
   TextRed2,
 } from "../../components/camera/style";
+import { userDecodeToken } from "../../utils/auth";
+import api from "../../services/services";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
+// import * as MediaLibrary from "expo-media-library"
+// import * as ImagePicker from "expo-image-picker"
 
 export const Profile = ({ navigation, route }) => {
   const [encomendas, setEncomendas] = useState([
@@ -57,6 +62,7 @@ export const Profile = ({ navigation, route }) => {
     },
   ]);
 
+  const [token, setToken] = useState({})
   const [showCameraModal, setShowCameraModal] = useState(false);
   const [cameraCapture, setCameraCapture] = useState(null);
   const [baseUser, setBaseUser] = useState(null);
@@ -73,11 +79,15 @@ export const Profile = ({ navigation, route }) => {
   async function BuscarUsuario(tokenUser) {
     try {
       const response = await api.get(
-        `/Usuario/BuscarPorId?id=${tokenUser.jti}`
+        `/Usuario/BuscarPorId?idUsuario=${tokenUser.jti}`
       );
+      
 
       setBaseUser({ ...response.data });
-      setPhoto(response.data.idNavigation.foto);
+      setPhoto(response.data.foto);
+      console.log(response.data);
+      console.log(baseUser);
+      console.log(photo);
     } catch (error) {
       console.log(error);
     }
@@ -107,7 +117,15 @@ export const Profile = ({ navigation, route }) => {
 
   useEffect(() => {
     ProfileLoad();
+    console.log(route);  
   }, [route]);
+
+//   useEffect(() => {
+//     if (route.params != null && baseUser) {
+//         AlterarFotoPerfil()
+//     }
+//     console.log(route.params);
+// }, [route, baseUser, photo])
 
   // const [photo, setPhoto] = useState(null)
   // useEffect(() => {

@@ -30,6 +30,9 @@ import { Home } from "./src/screens/home/home";
 
 const Stack = createNativeStackNavigator();
 
+// chave maps
+// AIzaSyCz98rjEPdys96yLs0sXYvmesFqrBJQISY
+
 export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
     Exo2_400Regular,
