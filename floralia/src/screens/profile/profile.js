@@ -11,9 +11,10 @@ import { ProfilePic, ProfilePicContainer } from '../../components/images/profile
 //import dos icons
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
-
 import { useState } from 'react';
+
+
+
 
 
 export const Profile = ({ navigation }) => {
@@ -70,7 +71,7 @@ export const Profile = ({ navigation }) => {
 
 
 
-                <TitleVerdeProfile>Minhas Encomendas:</TitleVerdeProfile>
+                <TitleVerdeProfile>Meus Produtos:</TitleVerdeProfile>
 
                 <FlatContainer
                     keyExtractor={(item) => item.id}
@@ -85,6 +86,7 @@ export const Profile = ({ navigation }) => {
                     )}
 
                 />
+ 
 
                 <HrProfile />
 

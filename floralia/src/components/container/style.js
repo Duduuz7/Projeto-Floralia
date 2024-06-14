@@ -138,4 +138,13 @@ export const TextContainerCart = styled.SafeAreaView`
   margin-left: 8%;
 
 `
+export const ContainerIcon = styled.SafeAreaView`
+  width: 100px;
+  height: 80px;
+  margin-top: 12px;
+  margin-left: 15;
+  flex-direction: row;
+  align-items: center;
+  gap: 10;
+`
 

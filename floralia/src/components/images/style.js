@@ -54,7 +54,7 @@ export const CameraIcon = styled.Image`
 `
 
 export const CardImage = styled.Image`
-    width: 110px;
+    width: 90px;
     height: 100%;
     border-right-width: 1px;
     border-color: #1C4B00;

@@ -18,8 +18,8 @@ export const ButtonGreenCart = styled(ButtonVerde)`
 `
 
 export const BackgroundIcon = styled.TouchableOpacity`
-  width: 56px;
-  height: 56px;
+  width: 32px;
+  height: 32px;
   background-color: #FFECF2;
   align-items: center;
   border-radius: 70px;
@@ -27,8 +27,8 @@ export const BackgroundIcon = styled.TouchableOpacity`
 `
 
 export const BackgroundIconGreen = styled.TouchableOpacity`
-  width: 56px;
-  height: 56px;
+  width: 32px;
+  height: 32px;
   background-color: #E4FFD4;
   align-items: center;
   border-radius: 70px;

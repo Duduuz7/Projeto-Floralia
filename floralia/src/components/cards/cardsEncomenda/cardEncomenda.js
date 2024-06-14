@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { BoxCard, CardTextContainer } from "../../container/style";
+import { BoxCard, CardTextContainer, ContainerIcon } from "../../container/style";
 import { CardContainer } from "./style";
 import { CardImage } from "../../images/style";
 import { CardData, CardName, CardStatus } from "../../title/style";
@@ -7,6 +7,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { BackgroundIcon, BackgroundIconGreen } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
+import { useState } from "react";
 
 export const Card = ({
     name,
@@ -35,12 +36,12 @@ export const Card = ({
         if (status === "Pendente") {
             return (
 
-                <View style={{ marginTop: 24, marginLeft: 17 }}>
-                    <BackgroundIcon>
+                <ContainerIcon>
+                    <BackgroundIcon >
 
                         {/* <AntDesign name="close" size={24} color="#B80000" /> */}
 
-                        <Ionicons name="close" size={20} color="#B80000" onPress={CancelarEncomenda()} />
+                        <Ionicons name="close" size={20} color="#B80000" onPress={CancelarEncomenda()}  />
 
                     </BackgroundIcon>
 
@@ -48,7 +49,8 @@ export const Card = ({
                     <BackgroundIconGreen>
                         <FontAwesome6 name="check" size={18} color="#1C4B00" />
                     </BackgroundIconGreen>
-                </View >
+                    
+                </ContainerIcon>
 
             );
         } else if (status === "Retirado") {
