@@ -43,7 +43,7 @@ export const BoxCard = styled.SafeAreaView`
   width: 100%;
   height: 100%;
   align-items: flex-start;
-  border: 2px;
+
 `;
 
 export const CardTextContainer = styled.SafeAreaView`
