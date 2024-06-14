@@ -66,7 +66,9 @@ export const Profile = ({ navigation, route }) => {
   const [showCameraModal, setShowCameraModal] = useState(false);
   const [cameraCapture, setCameraCapture] = useState(null);
   const [baseUser, setBaseUser] = useState(null);
-  const [photo, setPhoto] = useState(null);
+  const [nome, setNome] = useState(null);
+  const [photo, setPhoto] = useState(null); // mostrar a foto na busca do usuario
+  const [photoCapture, setPhotoCapture] = useState(null); // Salvar a foto alterada
 
   async function ProfileLoad() {
     const tokenDecode = await userDecodeToken();
@@ -81,26 +83,26 @@ export const Profile = ({ navigation, route }) => {
       const response = await api.get(
         `/Usuario/BuscarPorId?idUsuario=${tokenUser.jti}`
       );
-      
 
       setBaseUser({ ...response.data });
       setPhoto(response.data.foto);
-      console.log(response.data);
-      console.log(baseUser);
-      console.log(photo);
+      setNome(response.data.nome)
+      console.log(nome);
+
     } catch (error) {
       console.log(error);
     }
   }
 
+  // Alterar a foto de perfil
   async function AlterarFotoPerfil() {
     const formData = new FormData();
-    formData.append("Arquivo", {
-      uri: route.params.photoUri,
-      name: `image.${route.params.photoUri.split(".")[1]}`,
-      type: `image/${route.params.photoUri.split(".")[1]}`,
+    formData.append("File", {
+      uri: photoCapture,
+      name: `image.${photoCapture.split(".").pop()}`,
+      type: `image/${photoCapture.split(".").pop()}`,
     });
-
+    
     await api
       .put(`/Usuario/AlterarFotoPerfil?id=${baseUser.id}`, formData, {
         headers: {
@@ -108,16 +110,47 @@ export const Profile = ({ navigation, route }) => {
         },
       })
       .then(() => {
-        setPhoto(route.params.photoUri);
+        // Salva a foto alterada na visualizacao
+        setPhoto( photoCapture )
       })
       .catch((error) => {
         console.log(error);
+
       });
   }
 
+  async function SalvarFunction() {
+    
+
+   
+        await api.put("/Medicos", {
+            id: token.jti,
+            cep: baseUser.endereco.cep,
+            logradouro: baseUser.endereco.logradouro,
+            numero: baseUser.endereco.numero,
+            cidade: baseUser.endereco.cidade,
+            crm: baseUser.crm,
+            especialidade: baseUser.especialidade.id
+        }).then( async(response) => {
+            console.log(response.data);
+            await ProfileLoad()
+            navigation.navigate('Main')
+        }).catch((error) => {
+            console.log(error);
+        })
+  
+    setEditing(false)
+    setDesativarNavigation(false)
+}
+
+  // Monitora se houve uma nova foto informada
+  useEffect(() => {
+    AlterarFotoPerfil();
+  }, [photoCapture])
+
   useEffect(() => {
     ProfileLoad();
-    console.log(route);  
+    // console.log(route);
   }, [route]);
 
 //   useEffect(() => {
@@ -168,10 +201,10 @@ export const Profile = ({ navigation, route }) => {
         </HeaderProfile>
 
         <ProfilePic
-        // source={{ uri: photo }}
+          source={{ uri: photo }}
         />
 
-        <ContainerFoto>
+        {/* <ContainerFoto>
           {cameraCapture == null ? (
             <>
               <MaterialCommunityIcons
@@ -189,7 +222,7 @@ export const Profile = ({ navigation, route }) => {
               />
             </>
           )}
-        </ContainerFoto>
+        </ContainerFoto> */}
 
         {/* <ContainerLabel>
           <ButtonCamera onPress={() => setShowCameraModal(true)}>
@@ -211,7 +244,7 @@ export const Profile = ({ navigation, route }) => {
           </TouchableOpacity>
         </BackgroundIcon>
 
-        <TitleVerde>Elza Lucia</TitleVerde>
+        <TitleVerde>{nome}</TitleVerde>
 
         <TitleVerdeProfile>Minhas Encomendas:</TitleVerdeProfile>
 
@@ -229,7 +262,10 @@ export const Profile = ({ navigation, route }) => {
         />
 
         <HrProfile />
+
+        {/* Passa pro modal a responsabilidade de salvar no estado da foto alterada */}
         <CameraExpo
+          setPhotoPag={setPhotoCapture}
           visible={showCameraModal}
           setShowCameraModal={setShowCameraModal}
           setCameraCapture={setCameraCapture}

@@ -18,6 +18,8 @@ import { ButtonAppointmentSecondary, ButtonModalAppointment, ButtonSecondaryText
 */
 
 export function CameraExpo({
+  setPhotoPag,
+  
   visible,
   setShowCameraModal,
   setCameraCapture
@@ -69,12 +71,17 @@ export function CameraExpo({
   }
 
   async function UploadPhoto() {
-    await MediaLibrary.createAssetAsync(photo)
-      .then(() => {
-        alert('Foto salva com sucesso')
-      }).catch(() => {
-        alert('Não foi possivel processar a foto')
-      })
+    setPhotoPag(photo)
+    
+    await ClearPhoto();
+
+    setShowCameraModal(false)
+    // await MediaLibrary.createAssetAsync(photo)
+    //   .then(() => {
+    //     alert('Foto salva com sucesso')
+    //   }).catch(() => {
+    //     alert('Não foi possivel processar a foto')
+    //   })
   }
 
 //   style={styles.container}
@@ -116,7 +123,7 @@ export function CameraExpo({
 
             {/* Botão */}
             <View style={{ flex: 1 ,flexDirection: 'column', alignItems: 'center',}}>
-              <ButtonModalAppointment onPress={() => obterImagem() && ClearPhoto()}>
+              <ButtonModalAppointment onPress={() => UploadPhoto()}>
                 <ButtonTitle>Confirmar</ButtonTitle>
               </ButtonModalAppointment>
 
