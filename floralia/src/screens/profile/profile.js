@@ -87,7 +87,6 @@ export const Profile = ({ navigation, route }) => {
       setBaseUser({ ...response.data });
       setPhoto(response.data.foto);
       setNome(response.data.nome)
-      console.log(nome);
 
     } catch (error) {
       console.log(error);
@@ -118,30 +117,6 @@ export const Profile = ({ navigation, route }) => {
 
       });
   }
-
-  async function SalvarFunction() {
-    
-
-   
-        await api.put("/Medicos", {
-            id: token.jti,
-            cep: baseUser.endereco.cep,
-            logradouro: baseUser.endereco.logradouro,
-            numero: baseUser.endereco.numero,
-            cidade: baseUser.endereco.cidade,
-            crm: baseUser.crm,
-            especialidade: baseUser.especialidade.id
-        }).then( async(response) => {
-            console.log(response.data);
-            await ProfileLoad()
-            navigation.navigate('Main')
-        }).catch((error) => {
-            console.log(error);
-        })
-  
-    setEditing(false)
-    setDesativarNavigation(false)
-}
 
   // Monitora se houve uma nova foto informada
   useEffect(() => {
