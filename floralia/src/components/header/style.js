@@ -13,9 +13,6 @@ export const  Header = styled.SafeAreaView`
 
 export const  HeaderProfile = styled(Header)`
     height: 8%;
-<<<<<<< HEAD
 
-=======
->>>>>>> gui
 `
 

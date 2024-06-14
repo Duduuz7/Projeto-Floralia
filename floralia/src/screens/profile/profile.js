@@ -1,5 +1,4 @@
 import { Feather } from '@expo/vector-icons';
-import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { Container, ContainerProfile, FlatContainer, HrProfile } from '../../components/container/style';
 import { HeaderProfile } from '../../components/header/style';
@@ -9,6 +8,13 @@ import { TitleName, TitleVerdeProfile } from '../../components/title/style';
 import { Card } from '../../components/cards/cardsEncomenda/cardEncomenda';
 import { ProfilePic, ProfilePicContainer } from '../../components/images/profilepic/style';
 
+//import dos icons
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+
+import { useState } from 'react';
+
 
 export const Profile = ({ navigation }) => {
 
@@ -16,28 +22,7 @@ export const Profile = ({ navigation }) => {
         { name: 'Buque de rosas', id: '1', status: 'Pendente', dataEncomenda: '12/06' },
         { name: 'Buque de flores', id: '2', status: 'Retirado', dataEncomenda: '12/06' },
         { name: 'Buque de lirios', id: '3', status: 'Cancelado', dataEncomenda: '12/06' },
-        // { name: 'Buque de lirios', id: '4', status: 'Pendente', dataEncomenda: '12/06' },
     ]);
-
-    // const [photo, setPhoto] = useState(null)
-    // useEffect(() => {
-
-    //     console.log(route);
-
-    //     if (route.params !== null) {
-    //         AlterarFotoPerfil()
-    //     }
-
-
-    // }, [route.params])
-
-
-
-    // useEffect(() => {
-
-    // }, [photo])
-
-
 
     return (
         <ScrollView>

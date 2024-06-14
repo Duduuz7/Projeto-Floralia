@@ -44,8 +44,6 @@ export const Favoritos = ({ navigation }) => {
 
     }
 
-
-
     //passar o idProduto pelo modal
     async function AdicionarFavorito(){
         await api.post(`/Favorito`, {idUsuario:token.user, idProduto:idProduto}).then(response => {
@@ -57,8 +55,6 @@ export const Favoritos = ({ navigation }) => {
             console.log(error);
         })
     }
-
-
 
     //passar os Ids pelo modal
     async function CriarEncomenda(){

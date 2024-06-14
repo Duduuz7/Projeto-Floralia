@@ -40,20 +40,20 @@ export const Card = ({
 
                         {/* <AntDesign name="close" size={24} color="#B80000" /> */}
 
-                        <Ionicons name="close" size={32} color="#B80000" onPress={CancelarEncomenda()} />
+                        <Ionicons name="close" size={20} color="#B80000" onPress={CancelarEncomenda()} />
 
                     </BackgroundIcon>
+
+
+                    <BackgroundIconGreen>
+                        <FontAwesome6 name="check" size={18} color="#1C4B00" />
+                    </BackgroundIconGreen>
                 </View >
 
             );
         } else if (status === "Retirado") {
             return (
-
-                <View style={{ marginTop: 24, marginLeft: 17 }}>
-                    <BackgroundIconGreen>
-                        <FontAwesome6 name="check" size={24} color="#1C4B00" />
-                    </BackgroundIconGreen>
-                </View >
+                <></>
 
             );
         } else if (status === "Cancelado") {
