@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Logo = styled.Image`
     width: 222px;
     height: 78px;
+    margin-top: 100px;
 `
 export const ImageProduct = styled.Image`
     width: 80px;
@@ -39,9 +40,30 @@ export const CameraIcon = styled.Image`
 export const CardImage = styled.Image`
     width: 110px;
     height: 100%;
-    border-radius: 0px;
-    border-right: 1px;
-    border-color: #1C4B00;
     align-self: center;
+    border-radius: 2px;
     /* margin-top: 22px; */
+`
+export const LogoAtualizar = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 30%;
+    margin-bottom: 2px;
+`
+
+export const LogoRecuperar = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 35%;
+    margin-bottom: 2px;
+`
+
+export const LogoCadastro = styled.Image`
+    width: 260px;
+    height: 90px;
+    margin-top: 15%;
+    margin-bottom: 2px;
+`
+export const CardImageProfile = styled(CardImage)`
+    width: 90px;
 `

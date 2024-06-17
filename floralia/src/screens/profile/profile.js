@@ -1,97 +1,192 @@
-import { FlatList, ScrollView, View } from "react-native"
-import { BackgroundIcon, Container, FlatContainer, HrProfile } from "../../components/container/style"
-import { Header, HeaderProfile } from "../../components/header/style"
-import { ProfilePic } from "../../components/images/profilepic/style"
-import { CameraIcon, LogoHeader, MenuHamburguer } from "../../components/images/style"
-import { TitleVerde, TitleVerdeProfile } from "../../components/title/style"
+import { Feather } from '@expo/vector-icons';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
+import { Container, ContainerProfile, FlatContainer, HrProfile } from '../../components/container/style';
+import { HeaderProfile } from '../../components/header/style';
+import { LogoHeader } from '../../components/images/style';
+import { BackGroundIconCamera, BackgroundIcon, BackgroundIconCamera } from '../../components/button/style';
+import { TitleName, TitleVerdeName, TitleVerdeProfile } from '../../components/title/style';
+
+import { ProfilePic, ProfilePicContainer } from '../../components/images/profilepic/style';
+
+//import dos icons
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useState } from "react"
-import { Card } from "../../components/cards/cardsEncomenda/cardsEncomenda"
-import { Feather } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
+import { HeaderComponent } from '../../components/header/header';
+import { Card } from '../../components/cards/cardsEncomenda/cardsEncomenda';
+import api from '../../services/services';
+import { useFocusEffect } from '@react-navigation/native';
+import { userDecodeToken } from '../../utils/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 export const Profile = ({ navigation }) => {
 
-    const [encomendas, setEncomendas] = useState([
-        { name: 'Buque de rosas', id: '1', status: 'Pendente', dataEncomenda: '12/06' },
-        { name: 'Buque de flores', id: '2', status: 'Recebido', dataEncomenda: '12/06'  },
-        { name: 'Buque de lirios', id: '3', status: 'Cancelado', dataEncomenda: '12/06'  },
-        { name: 'Buque de lirios', id: '4', status: 'pendente', dataEncomenda: '12/06'  },
-    ]);
-
-    // const [photo, setPhoto] = useState(null)
-    // useEffect(() => {
-
-    //     console.log(route);
-
-    //     if (route.params !== null) {
-    //         AlterarFotoPerfil()
-    //     }
+    const [token, setToken] = useState({})
+    const [showCameraModal, setShowCameraModal] = useState(false);
+    const [cameraCapture, setCameraCapture] = useState(null);
+    const [baseUser, setBaseUser] = useState(null);
+    const [profile, setProfile] = useState(null);
+    const [photo, setPhoto] = useState(null); // mostrar a foto na busca do usuario
+    const [photoCapture, setPhotoCapture] = useState(null); // Salvar a foto alterada
+    const [listaCarrinho, setListaCarrinho] = useState([]);
+    const [statusCarrinho, setStatusCarrinho] = useState();
 
 
-    // }, [route.params])
+    async function ListarCarrinho(user) {
+        try {
+            // if (token) {
+            await api.get(`/Carrinho/BuscarPorUsuario?idUsuario=${user}`).then(response => {
+
+                setListaCarrinho(response.data);
+                console.log(response.data);
+            }).catch(error => {
+                console.log(error);
+            })
+            // }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
 
-    // useEffect(() => {
+    async function ProfileLoad() {
+        const tokenDecode = await userDecodeToken();
+        if (tokenDecode) {
+            setToken(tokenDecode);
+            console.log('token');
 
-    // }, [photo])
+            await api.get(
+                `/Usuario/BuscarPorId?idUsuario=${tokenDecode.user}`
+            ).then(response => {
+                console.log(response.data);
+                setProfile(response.data)
+                setBaseUser({ ...response.data });
+                setPhoto(response.data.foto);
+            }).catch(error => {
+                console.log(error);
+            })
+
+            await api.get(`/Carrinho/BuscarPorUsuario?idUsuario=${tokenDecode.user}`).then(response => {
+
+                setListaCarrinho(response.data);
+                console.log(response.data);
+            }).catch(error => {
+                console.log(error);
+            })
+
+        }
+
+
+
+    }
+
+
+
+    // Alterar a foto de perfil
+    async function AlterarFotoPerfil() {
+        const formData = new FormData();
+        formData.append("File", {
+            uri: photoCapture,
+            name: `image.${photoCapture.split(".").pop()}`,
+            type: `image/${photoCapture.split(".").pop()}`,
+        });
+
+        await api
+            .put(`/Usuario/AlterarFotoPerfil?id=${baseUser.id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then(() => {
+                // Salva a foto alterada na visualizacao
+                setPhoto(photoCapture)
+            })
+            .catch((error) => {
+                console.log(error);
+
+            });
+    }
+
+    // Monitora se houve uma nova foto informada
+    useEffect(() => {
+        AlterarFotoPerfil();
+    }, [photoCapture])
+
+    useEffect(() => {
+        ProfileLoad()
+    }, [])
+
+
+    // useFocusEffect(React.useCallback(() => {
+    //     ProfileLoad()
+    // }, []))
+
+    // const [encomendas, setEncomendas] = useState([
+    //     { name: 'Buque de rosas', id: '1', status: 'Pendente', dataEncomenda: '12/06' },
+    //     { name: 'Buque de flores', id: '2', status: 'Retirado', dataEncomenda: '12/06' },
+    //     { name: 'Buque de lirios', id: '3', status: 'Cancelado', dataEncomenda: '12/06' },
+    // ]);
 
     return (
-    // <ScrollView>
+        // <ScrollView>
         <Container>
+            {profile ?
+                <>
+                    <HeaderComponent navigation={navigation} />
 
-            <HeaderProfile>
 
-                <View style={{ marginLeft: 14 }}>
-                    <Ionicons name="menu" size={40} color="#B83B5E" />
-                </View>
+                    <ProfilePicContainer>
+                        <ProfilePic
+                            source={{ uri: profile.foto }}
+                        />
 
-                <LogoHeader
-                    source={require('../../assets/img/logo-removebg-preview 2Logo_Floralia (1) 1.png')}
-                />
+                        <BackgroundIconCamera>
+                            <Feather name="camera" size={30} color="#99004F" />
+                        </BackgroundIconCamera>
 
-                <View style={{ marginRight: 14 }}>
-                    <MaterialCommunityIcons name="cart-outline" size={37} color="#B83B5E" margin-left="12px" onPress={() => navigation.navigate("Carrinho")}/>
-                </View>
+                    </ProfilePicContainer>
 
-                {/* <MaterialCommunityIcons name="cart-remove" size={24} color="black" /> */}
-            </HeaderProfile>
 
-            <ProfilePic
-            // source={{ uri: photo }}
-            />
-            <BackgroundIcon>
-                <Feather name="camera" size={30} color="#99004F" />
-            </BackgroundIcon>
-            
 
-            <TitleVerde>Elza Lucia</TitleVerde>
+                    <ContainerProfile>
 
-            <TitleVerdeProfile>Minhas Encomendas:</TitleVerdeProfile>
+                        <TitleVerdeName style={{ textAlign: 'center' }}>{token.name}</TitleVerdeName>
 
-            
-            <FlatContainer
-                keyExtractor={(item) => item.id}
-                data={encomendas}
-                renderItem={({ item }) => (
-                    <Card
-                        navigation={navigation}
-                        name={item.name}
-                        status={item.status}
-                        dataEncomenda={item.dataEncomenda}
+                    </ContainerProfile>
+
+
+
+                    <TitleVerdeProfile>Meus Produtos:</TitleVerdeProfile>
+
+                    <FlatContainer
+                        keyExtractor={(item) => item.id}
+                        data={listaCarrinho}
+                        renderItem={({ item }) => (
+                            item.status != null ?
+                            <Card
+                                navigation={navigation}
+                                encomenda={item}
+                                status={item.status}
+                                dataEncomenda={item.dataEncomenda}
+                            />
+                            : null
+                        )}
+
                     />
 
 
-                )}
+                    <HrProfile />
+                </>
 
-            />
+                : <ActivityIndicator />}
 
-
-            <HrProfile/>
-
-            
         </Container>
-    // </ScrollView>
+
+
+
+        // </ScrollView >
     )
 }

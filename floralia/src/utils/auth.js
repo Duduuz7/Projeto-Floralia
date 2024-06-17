@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { jwtDecode } from 'jwt-decode';
 import { encode, decode } from "base-64";
+import { useNavigation } from '@react-navigation/native';
 
 if( !global.atob ){
     global.atob = encode
@@ -9,6 +10,17 @@ if( !global.atob ){
 if( !global.btoa ){
     global.atob = decode
 }
+
+export const Logout = async () => {
+
+    await AsyncStorage.removeItem("token");
+
+    console.log("Token apagado");
+
+    // navigation.replace("Login")
+
+}
+
 
 export const tokenClean = async () => {
     const token = JSON.parse(await AsyncStorage.getItem("token")).token
@@ -34,3 +46,5 @@ export const userDecodeToken = async () => {
         user: decoded.jti
     }
 }
+
+

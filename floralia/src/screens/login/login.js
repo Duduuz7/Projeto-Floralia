@@ -21,7 +21,7 @@ import {
 } from "../../components/inputFunction/inputFunction";
 
 export const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("math29kiss@gmail.com");
   const [senha, setSenha] = useState("12345");
   const [loading, setLoading] = useState(false);
   const [secure, setSecure] = useState(true);
@@ -107,7 +107,7 @@ export const Login = ({ navigation }) => {
         placeholder="Senha"
       />
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.replace('recuperarSenha')}>
         <LinkRosa>Esqueceu sua senha?</LinkRosa>
       </TouchableOpacity>
 
@@ -120,7 +120,7 @@ export const Login = ({ navigation }) => {
       <ViewNovoAqui>
         <TextVerde>É novo aqui?</TextVerde>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('cadastro')}>
           <LinkRosaConta>Crie sua conta agora!</LinkRosaConta>
         </TouchableOpacity>
       </ViewNovoAqui>

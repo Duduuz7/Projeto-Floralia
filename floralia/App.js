@@ -6,13 +6,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import Splash from './src/screens/splash/splash';
 import { Profile } from './src/screens/profile/profile';
 import { Login } from './src/screens/login/login';
-import { RecuperarSenha } from './src/screens/recuperarSenha/recuperarSenha';
+import { RecuperarSenha} from './src/screens/recuperarSenha/recuperarSenha';
 import { useFonts, Exo2_400Regular, Exo2_500Medium, Exo2_600SemiBold, Exo2_700Bold } from '@expo-google-fonts/exo-2';
 import { Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
 import { Favoritos } from './src/screens/favoritos/favoritos';
 import { Carrinho } from './src/screens/carrinho/carrinho';
 import { Home } from './src/screens/home/home';
 import { Main } from './src/screens/main/main';
+import { CodigoRecuperarSenha } from './src/screens/codigoRecuperarSenha/codigoRecuperarSenha';
+import { AtualizarSenha } from './src/screens/atualizarSenha/atualizarSenha';
+import { Cadastro } from './src/screens/cadastro/cadastro';
 
 
 
@@ -38,7 +41,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator screenOptions={ headerShown=false }>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
 
         <Stack.Screen
           name="Splash"
@@ -83,9 +86,26 @@ export default function App() {
         />
 
         <Stack.Screen
-          name="RecuperarSenha"
+          name="recuperarSenha"
           component={RecuperarSenha}
           options={{ title: "RecuperarSenha" }}
+        />
+
+        <Stack.Screen
+          name="codigoRecuperarSenha"
+          component={CodigoRecuperarSenha}
+          options={{ title: "CodigoRecuperarSenha" }}
+        />
+
+        <Stack.Screen
+          name="atualizarSenha"
+          component={AtualizarSenha}
+          options={{ title: "AtualizarSenha" }}
+        />
+        <Stack.Screen
+          name="cadastro"
+          component={Cadastro}
+          options={{ title: "Cadastro" }}
         />
 
         <Stack.Screen

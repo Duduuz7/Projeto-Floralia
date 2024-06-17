@@ -5,3 +5,7 @@ export const TextButtonVerde = styled.Text`
     font-family: "Exo2_700Bold";
     color: #FFFFFF;
 `
+
+export const TextButtonVerdeCart = styled(TextButtonVerde)`
+    font-family: 'Exo2_600SemiBold';
+`

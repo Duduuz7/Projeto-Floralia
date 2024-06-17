@@ -5,14 +5,13 @@ import { CardImage } from "../../images/style";
 import { CardData, CardName, CardStatus } from "../../title/style";
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
-import { BackgroundIcon, BackgroundIconGreen } from "../../button/style";
+import { BackgroundIcon, BackgroundIconGreen, BackgroundIconProfile } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
 
 export const Card = ({
     name,
     status,
-    encomenda,
     precoProduto,
     dataEncomenda,
 }) => {
@@ -34,17 +33,17 @@ export const Card = ({
     }
 
     const Check = () => {
-        if (status == 1) {
+        if (status === "Pendente") {
             return (
 
                 <ContainerIcon>
-                    <BackgroundIcon >
+                    <BackgroundIconProfile >
 
                         {/* <AntDesign name="close" size={24} color="#B80000" /> */}
 
                         <Ionicons name="close" size={20} color="#B80000" onPress={CancelarEncomenda()}  />
 
-                    </BackgroundIcon>
+                    </BackgroundIconProfile>
 
 
                     <BackgroundIconGreen>
@@ -54,12 +53,12 @@ export const Card = ({
                 </ContainerIcon>
 
             );
-        } else if (status == 2) {
+        } else if (status === "Retirado") {
             return (
                 <></>
 
             );
-        } else if (status == 3) {
+        } else if (status === "Cancelado") {
             return (
                 <></>
             );
@@ -69,18 +68,18 @@ export const Card = ({
     return (
 
         <CardContainer borderColor={
-            status == 1 ? "#1C4B00" : "#8C8A97"
+            status == "Pendente" ? "#1C4B00" : "#8C8A97"
         }>
             <BoxCard>
-                {/* <CardImage /> */}
+                <CardImage />
 
                 <CardTextContainer>
 
-                    <CardName>{encomenda.idProdutoNavigation.nome}</CardName>
+                    <CardName>{name}</CardName>
 
                     <CardStatus>Status: {status}</CardStatus>
 
-                    {/* <CardData>Data: {dataEncomenda}</CardData> */}
+                    <CardData>Data: {dataEncomenda}</CardData>
 
                 </CardTextContainer>
 
@@ -92,3 +91,6 @@ export const Card = ({
 
     );
 };
+
+
+

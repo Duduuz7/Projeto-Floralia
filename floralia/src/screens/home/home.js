@@ -5,8 +5,9 @@ import { InputSearch } from "../../components/input/style"
 import { FontAwesome } from '@expo/vector-icons';
 import { CardHome } from "../../components/cards/cardHome/cardHome";
 import api from "../../services/services";
-import { tokenClean, userDecodeToken } from "../../utils/auth";
+import { Logout, tokenClean, userDecodeToken } from "../../utils/auth";
 import { ModalCarrinho } from "../../components/modalEncomenda/ModalCarrinho";
+import { Text, TouchableOpacity } from "react-native";
 
 export const Home = ({ navigation }) => {
 
@@ -15,6 +16,8 @@ export const Home = ({ navigation }) => {
     const [pesquisa, setPesquisa] = useState('');
     const [showModalCarrinho, setShowModalCarrinho] = useState(false);
     const [produtoSelecionado, setProdutoSelecionado] = useState();
+    const [idUsuario, setIdUsuario] = useState();
+
 
     async function ListarProdutos() {
         await api.get(`/Produto/ListarTodos`).then(response => {
@@ -34,6 +37,7 @@ export const Home = ({ navigation }) => {
             } else {
                 const response = await api.get(`/Produto/BuscaPorNome?nome=${nome}`);
                 setProdutosPesquisados(response.data);
+                console.log(response.data);
             }
         } catch (error) {
             console.log(error);
@@ -51,6 +55,7 @@ export const Home = ({ navigation }) => {
         const token = await userDecodeToken();
         if (token != null) {
             setProfile(token)
+            setIdUsuario(token.user)
             // console.log(token);
         }
     }
@@ -63,6 +68,9 @@ export const Home = ({ navigation }) => {
             setShowModalCarrinho(true)
         }
     }
+
+        //passar o idProduto pelo modal
+       
 
 
     useEffect(() => {
@@ -83,8 +91,11 @@ export const Home = ({ navigation }) => {
 
     return (
         <Container>
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent navigation={navigation}/>
 
+            <TouchableOpacity style={{width: 20, height: 20}} onPress={() => Logout()}>
+                        <Text>Logout</Text>
+            </TouchableOpacity>
             <ContainerSearch>
                 <InputSearch
                     onChangeText={(txt) => setPesquisa(txt)}
@@ -112,6 +123,8 @@ export const Home = ({ navigation }) => {
 
                 />
             </ContainerProduto>
+
+            
 
             <ModalCarrinho
             navigation={navigation}

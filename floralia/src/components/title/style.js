@@ -9,23 +9,36 @@ export const TitleVerde = styled.Text`
 `
 export const TitleVerdeProfile = styled(TitleVerde)`
  text-align: left;
+ margin-top: -40px;
+`
+export const TitleVerdeName = styled(TitleVerde)`
+ text-align: left;
+ margin-top: 13px;
 `
 
 export const CardName = styled(TitleVerde)`
     margin-left: 10px;
     font-size: 19px;
     align-self: flex-start;
-    margin-top: 0px;
+    margin-top: 10px;
+    /* text-align: center; */
 `
 
 export const CardStatus = styled(CardName)`
     color: #99004F;
     font-size: 16px;
-    margin-top: 0px
+    margin-top: 0px;
 `
 
 export const CardData = styled(CardName)`
-    color: #000000;
+    color: black;
     font-size: 16px;
-    margin-top: 0px
+    margin-top: 0px;
+`
+
+export const CardPreco = styled(CardName)`
+    color: #99004F;
+`
+export const TitleName = styled(TitleVerde)`
+    margin-bottom: 16px;
 `

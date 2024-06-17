@@ -81,7 +81,7 @@ export const Description2 = styled.Text`
 export const Description = styled.Text`
   margin-top: 20px;
   width: 90%;
-  height: 110px;
+  height: 120px;
   font-size: 18px;
   font-family: Quicksand_500Medium;
   color: #534E63;

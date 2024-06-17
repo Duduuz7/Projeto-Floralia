@@ -11,9 +11,15 @@ import { Home } from '../home/home';
 const Drawer = createDrawerNavigator();
 
 export const Main = () => {
+
     return (
 
-        <Drawer.Navigator screenOptions={headerShown = false} initialRouteName="home">
+        <Drawer.Navigator
+            screenOptions={{ headerShown: false }}
+            initialRouteName="Login"
+            
+        >
+
             <Drawer.Screen
                 name="home"
                 component={Home}
@@ -40,7 +46,7 @@ export const Main = () => {
             <Drawer.Screen
                     name="Login"
                     component={Login}
-                    options={{ title: "Login" }}
+                    options={{ title: " " }}
                 />
 
 

@@ -1,4 +1,4 @@
-import { ActivityIndicator, Alert, Modal } from "react-native";
+import { ActivityIndicator, Alert, Modal, TouchableOpacity } from "react-native";
 import { ButtonCarrinho, ButtonModal, CantainerParcelas, ContainerButtonTab, ContainerClose, Description, Description2, EncomendaModal, ModalContent, Picture, PictureContent, PrecoProduto, ProdutoDescription, TextParcelasBlack, TextParcelasPink, TitleButtonModal, TitleButtonProduto, TitleDescription, TitleModal } from "./StyledModalEncomenda";
 import { Ionicons } from '@expo/vector-icons';
 
@@ -8,8 +8,9 @@ import { Ionicons } from '@expo/vector-icons';
 // } from "../CancellationModal/StyleCancelationModal";
 
 import { userDecodeToken } from "../../utils/auth";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../../services/services";
+import { useFocusEffect } from "@react-navigation/native";
 
 export const ModalCarrinho = ({
   navigation,
@@ -18,7 +19,6 @@ export const ModalCarrinho = ({
   setShowModalCarrinho,
   setShowModal = null,
   produto,
-
   ...rest
 }) => {
   // const [profile, setProfile] = useState(null);
@@ -31,13 +31,34 @@ export const ModalCarrinho = ({
 
   const [favorito, setFavorito] = useState(false)
 
-  function handleFunction() {
-    navigation.navigate('Login')
-    setShowModalCarrinho(false)
-    Alert.alert('Atenção',
-    'É preciso estar logado'
-    )
+  // function handleFunction() {
+  //   navigation.navigate('Login')
+  //   setShowModalCarrinho(false)
+  //   Alert.alert('Atenção',
+  //     'É preciso estar logado'
+  //   )
+  // }
+
+  async function AdicionarFavorito() {
+    await api.post(`/Favorito`, { idUsuario: profile.user, idProduto: produto.id }).then(response => {
+      console.log(response.data);
+      setFavorito(true)
+    }).catch(error => {
+      console.log(error);
+    })
   }
+
+  // async function DeletarFavorito() {
+
+  //   await api.delete(`/Favorito?id=${idFavorito}`).then(response => {
+
+  //     console.log('funcionou');
+
+  //   }).catch(error => {
+  //     console.log(error);
+  //   })
+
+  // }
 
   async function ProdutoFavorito() {
     try {
@@ -47,13 +68,14 @@ export const ModalCarrinho = ({
         if (response.status == 200) {
           setFavorito(true)
         }
-        else{
+        else {
           setFavorito(false)
+          // navigation.navigate('Login')
         }
       })
-      .catch(error => {
-        console.log(error);
-      })
+        .catch(error => {
+          console.log(error);
+        })
     } catch (error) {
       console.log(error);
     }
@@ -63,15 +85,15 @@ export const ModalCarrinho = ({
   async function AdicionarCarrinho() {
     try {
       if (profile.user != null) {
-        
-        await api.post(`/Carrinho/Cadastrar`, {idUsuario: profile.user, idProduto: produto.id}).then(response => {
+
+        await api.post(`/Carrinho/Cadastrar`, { idUsuario: profile.user, idProduto: produto.id }).then(response => {
           console.log('Cadastrado');
         }).catch(error => {
           console.log(error);
         })
       }
-      else{
-         handleFunction()
+      else {
+        handleFunction()
       }
 
     } catch (error) {
@@ -79,10 +101,23 @@ export const ModalCarrinho = ({
     }
   }
 
-  useEffect(() => {
-    ProdutoFavorito();
-  }, [produto]);
+  // async function ProdutoID() {
+  //   await api.get()
+  // }
 
+  function handleClose() {
+    AdicionarCarrinho()
+    setShowModalCarrinho(false)
+  }
+
+
+  useFocusEffect(React.useCallback(() => {
+    ProdutoFavorito();
+  }, [favorito, produto]))
+
+  useEffect(() => {
+    ProdutoFavorito()
+  },[produto, favorito])
 
   return (
     <Modal {...rest} visible={visible} transparent={true} animationType="fade">
@@ -114,16 +149,21 @@ export const ModalCarrinho = ({
             <Description2>{produto.descricao}</Description2>
           </ModalContent>
           <ContainerButtonTab>
-            {favorito ? <Ionicons name="heart-sharp" size={24} color="#B83B5E" /> : <Ionicons name="heart-outline" size={24} color="#B83B5E" />}
-            
+            {favorito ? <Ionicons name="heart-sharp" size={24} color="#B83B5E" /> :
+              <TouchableOpacity onPress={() => AdicionarFavorito()}>
+                <Ionicons name="heart-outline" size={24} color="#B83B5E" />
+              </TouchableOpacity>
 
-            <ButtonCarrinho onPress={() => AdicionarCarrinho()}>
+            }
+
+
+            <ButtonCarrinho onPress={() => handleClose()}>
               <TitleButtonProduto>Adicionar ao carrinho</TitleButtonProduto>
             </ButtonCarrinho>
           </ContainerButtonTab>
         </EncomendaModal>
       </>
-        : <ActivityIndicator color={"#99004f"}/>}
+        : <ActivityIndicator color={"#99004f"} />}
     </Modal>
   );
 };
