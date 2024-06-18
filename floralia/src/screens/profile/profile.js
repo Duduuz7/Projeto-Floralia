@@ -18,6 +18,7 @@ import api from '../../services/services';
 import { useFocusEffect } from '@react-navigation/native';
 import { userDecodeToken } from '../../utils/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CameraExpo } from '../../components/camera/camera';
 
 
 
@@ -182,6 +183,15 @@ export const Profile = ({ navigation }) => {
                 </>
 
                 : <ActivityIndicator />}
+
+
+                        {/* Passa pro modal a responsabilidade de salvar no estado da foto alterada */}
+        <CameraExpo
+          setPhotoPag={setPhotoCapture}
+          visible={showCameraModal}
+          setShowCameraModal={setShowCameraModal}
+          setCameraCapture={setCameraCapture}
+        />
 
         </Container>
 

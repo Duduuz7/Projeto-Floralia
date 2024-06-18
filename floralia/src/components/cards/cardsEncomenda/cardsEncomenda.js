@@ -76,7 +76,15 @@ export const Card = ({
 
                 <CardTextContainer>
 
-                    <CardName>{encomenda.idProdutoNavigation.nome}</CardName>
+                    if (status == 1) {
+                        <CardName>{encomenda.idProdutoNavigation.nome}</CardName>
+
+                    }else{
+                        <CardNameStatus>
+                            {encomenda.idProdutoNavigation.nome}
+                        </CardNameStatus>
+                    }
+
 
                     <CardStatus>Status: {status}</CardStatus>
 

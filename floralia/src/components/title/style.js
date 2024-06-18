@@ -24,6 +24,10 @@ export const CardName = styled(TitleVerde)`
     /* text-align: center; */
 `
 
+export const CardNameStatus = styled(CardName)`
+    margin-bottom: 12px;
+`
+
 export const CardStatus = styled(CardName)`
     color: #99004F;
     font-size: 16px;
