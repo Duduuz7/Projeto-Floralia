@@ -6,6 +6,7 @@ import { Profile } from '../profile/profile';
 import { Favoritos } from '../favoritos/favoritos';
 import { Carrinho } from '../carrinho/carrinho';
 import { Home } from '../home/home';
+import { Localization } from '../localization/localization';
 
 
 const Drawer = createDrawerNavigator();
@@ -17,7 +18,7 @@ export const Main = () => {
         <Drawer.Navigator
             screenOptions={{ headerShown: false }}
             initialRouteName="Login"
-            
+
         >
 
             <Drawer.Screen
@@ -44,10 +45,15 @@ export const Main = () => {
                 options={{ title: "Carrinho" }}
             />
             <Drawer.Screen
-                    name="Login"
-                    component={Login}
-                    options={{ title: " " }}
-                />
+                name="Mapa"
+                component={Localization}
+                options={{ title: "Localização" }}
+            />
+            <Drawer.Screen
+                name="Login"
+                component={Login}
+                options={{ title: " " }}
+            />
 
 
         </Drawer.Navigator>

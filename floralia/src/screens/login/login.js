@@ -69,13 +69,10 @@ export const Login = ({ navigation }) => {
       console.log(123);
       console.log(response.data);
       navigation.navigate('home')
-      alert("logou");
+      // alert("logou");
     } catch (error) {
       console.log(error);
-      alert(
-        "Erro",
-        "Erro ao fazer login. Por favor, verifique suas credenciais."
-      ); // Exibe uma mensagem de erro em caso de falha no login
+      
     }
     // finally {
     //     setPress(false);

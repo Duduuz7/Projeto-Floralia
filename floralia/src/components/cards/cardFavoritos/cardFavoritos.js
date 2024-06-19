@@ -6,13 +6,14 @@ import { CardContainer } from "../cardsEncomenda/style";
 import { BackgroundIcon } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
 import api from "../../../services/services";
+import { useState } from "react";
 
 export const CardProduto = ({
     nome,
     imagem,
     idFavorito,
+    setTrue
 }) => {
-
 
     //passar o id do favorito pelo modal
     async function DeletarFavorito() {
@@ -20,6 +21,7 @@ export const CardProduto = ({
         await api.delete(`/Favorito?id=${idFavorito}`).then(response => {
 
             console.log('funcionou');
+            setTrue(true)
 
         }).catch(error => {
             console.log(error);
@@ -32,10 +34,7 @@ export const CardProduto = ({
         
 
         <CardContainer
-            onPress={() => {
-                setShowModalAppo(true)
-
-            }}>
+            >
             <BoxCard>
                 <CardImage
                 source={{ uri: imagem }} 

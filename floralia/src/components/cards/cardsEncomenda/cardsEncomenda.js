@@ -1,32 +1,46 @@
-import { View } from "react-native";
-import { BoxCard, CardTextContainer, ContainerIcon } from "../../container/style";
-import { CardContainer } from "./style";
+import { ActivityIndicator, View } from "react-native";
+import { BoxCard, CardTextContainer, CardTextContainerStatus, ContainerIcon } from "../../container/style";
+import { CardContainer, CardContainerPerfil } from "./style";
 import { CardImage } from "../../images/style";
-import { CardData, CardName, CardStatus } from "../../title/style";
+import { CardData, CardName, CardNameStatus, CardStatus } from "../../title/style";
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { BackgroundIcon, BackgroundIconGreen } from "../../button/style";
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from "react";
+import api from "../../../services/services";
 
 export const Card = ({
-    name,
     status,
     encomenda,
-    precoProduto,
-    dataEncomenda,
+    id,
+    setTrue
 }) => {
 
     const [cancelarEncomenda, setCancelarEncomenda] = useState()
 
 
-    async function CancelarEncomenda() {
+    async function AlterarStatus() {
 
-        await api.put(`/Encomenda?id=${token.idUsuario}`).then(response => {
+        await api.patch(`/Carrinho/AtualizarStatusCarrinho?idCarrinho=${id}&status=3`).then(response => {
 
-            setCancelarEncomenda(response.data)
+            // setCancelarEncomenda(response.data)
             console.log(response.data);
+            setTrue(true)
 
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
+    async function AlterarStatusRealizado() {
+
+        await api.patch(`/Carrinho/AtualizarStatusCarrinho?idCarrinho=${id}&status=2`).then(response => {
+
+            // setCancelarEncomenda(response.data)
+            console.log(response.data);
+            setTrue(true)
         }).catch(error => {
             console.log(error);
         })
@@ -42,15 +56,16 @@ export const Card = ({
 
                         {/* <AntDesign name="close" size={24} color="#B80000" /> */}
 
-                        <Ionicons name="close" size={20} color="#B80000" onPress={CancelarEncomenda()}  />
+                        {/* botao v */}
+                        <Ionicons name="close" size={20} color="#B80000" onPress={() => AlterarStatus()} />
 
                     </BackgroundIcon>
 
 
                     <BackgroundIconGreen>
-                        <FontAwesome6 name="check" size={18} color="#1C4B00" />
+                        <FontAwesome6 name="check" size={18} color="#1C4B00" onPress={() => AlterarStatusRealizado()} />
                     </BackgroundIconGreen>
-                    
+
                 </ContainerIcon>
 
             );
@@ -68,35 +83,46 @@ export const Card = ({
 
     return (
 
-        <CardContainer borderColor={
+        <CardContainerPerfil borderColor={
             status == 1 ? "#1C4B00" : "#8C8A97"
         }>
-            <BoxCard>
-                {/* <CardImage /> */}
+            {id ?
+                <BoxCard>
+                    {/* <CardImage /> */}
 
-                <CardTextContainer>
 
-                    if (status == 1) {
-                        <CardName>{encomenda.idProdutoNavigation.nome}</CardName>
+                    {
+                        status == 1 ?
+                            <CardTextContainer>
 
-                    }else{
-                        <CardNameStatus>
-                            {encomenda.idProdutoNavigation.nome}
-                        </CardNameStatus>
+                                <>
+                                    <CardName>{encomenda.idProdutoNavigation.nome}</CardName>
+                                </>
+
+                                <CardStatus>Status: {status == 1 ? 'Pendente' : null}</CardStatus>
+
+                                {/* <CardData>Data: {dataEncomenda}</CardData> */}
+
+                            </CardTextContainer>
+                            :
+                            <CardTextContainerStatus>
+                                <CardNameStatus>
+                                    {encomenda.idProdutoNavigation.nome}
+                                </CardNameStatus>
+                                <CardStatus>Status: {status == 2 ? 'Retirado' : 'Cancelado'}</CardStatus>
+
+                            </CardTextContainerStatus>
                     }
 
+                    {Check()}
 
-                    <CardStatus>Status: {status}</CardStatus>
+                </BoxCard>
+                :
+                <ActivityIndicator />
 
-                    {/* <CardData>Data: {dataEncomenda}</CardData> */}
+            }
+        </CardContainerPerfil>
 
-                </CardTextContainer>
-
-                {Check()}
-
-            </BoxCard>
-
-        </CardContainer>
 
     );
 };

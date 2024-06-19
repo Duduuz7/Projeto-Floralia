@@ -18,6 +18,8 @@ export const Favoritos = ({ navigation }) => {
     const [listaFavoritos, setListaFavoritos] = useState([])
 
     const [token, setToken] = useState({})
+    const [verdadeiro, setTrue] = useState(false)
+
 
     async function ProfileLoad() {
         const tokenDecode = await userDecodeToken();
@@ -51,7 +53,7 @@ export const Favoritos = ({ navigation }) => {
   
     useFocusEffect(React.useCallback(() => {
         ProfileLoad()
-    }, []))
+    }, [verdadeiro]))
 
 
 
@@ -74,6 +76,8 @@ export const Favoritos = ({ navigation }) => {
                 data={listaFavoritos}
                 renderItem={({ item }) => (
                     <CardProduto
+                        verdadeiro={verdadeiro}
+                        setTrue={setTrue}
                         navigation={navigation}
                         idFavorito={item.id}
                         imagem={item.idProdutoNavigation.foto}

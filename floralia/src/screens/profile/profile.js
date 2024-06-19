@@ -33,6 +33,7 @@ export const Profile = ({ navigation }) => {
     const [photoCapture, setPhotoCapture] = useState(null); // Salvar a foto alterada
     const [listaCarrinho, setListaCarrinho] = useState([]);
     const [statusCarrinho, setStatusCarrinho] = useState();
+    const [verdadeiro, setTrue] = useState(false)
 
 
     async function ListarCarrinho(user) {
@@ -116,9 +117,13 @@ export const Profile = ({ navigation }) => {
         AlterarFotoPerfil();
     }, [photoCapture])
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     ProfileLoad()
+    // }, [verdadeiro, ])
+    
+    useFocusEffect(React.useCallback(() => {
         ProfileLoad()
-    }, [])
+    }, [verdadeiro,listaCarrinho]))
 
 
     // useFocusEffect(React.useCallback(() => {
@@ -168,7 +173,10 @@ export const Profile = ({ navigation }) => {
                         renderItem={({ item }) => (
                             item.status != null ?
                             <Card
+                                verdadeiro={verdadeiro}
+                                setTrue={setTrue}
                                 navigation={navigation}
+                                id={item.id}
                                 encomenda={item}
                                 status={item.status}
                                 dataEncomenda={item.dataEncomenda}

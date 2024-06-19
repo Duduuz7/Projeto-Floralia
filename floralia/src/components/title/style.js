@@ -25,7 +25,9 @@ export const CardName = styled(TitleVerde)`
 `
 
 export const CardNameStatus = styled(CardName)`
-    margin-bottom: 12px;
+    margin-right: 15px;
+    width: 100%;
+    /* border-width: 5px; */
 `
 
 export const CardStatus = styled(CardName)`

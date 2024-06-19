@@ -10,7 +10,7 @@ export const TextInputVerde = styled.Text`
 
 export const LinkRosa = styled(TextInputVerde)`
     margin-right: 54%; 
-    margin-top: 5x;
+    /* margin-top: 5px; */
     /* margin-right: 50%; */
     /* margin-top: 30px; */
     color: #99004F;

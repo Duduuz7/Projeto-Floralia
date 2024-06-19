@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Logo = styled.Image`
     width: 222px;
     height: 78px;
-    margin-top: 100px;
+    margin-top: 175px;
 `
 export const ImageProduct = styled.Image`
     width: 80px;

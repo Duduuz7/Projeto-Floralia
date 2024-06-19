@@ -93,9 +93,9 @@ export const Home = ({ navigation }) => {
         <Container>
             <HeaderComponent navigation={navigation}/>
 
-            <TouchableOpacity style={{width: 20, height: 20}} onPress={() => Logout()}>
+            {/* <TouchableOpacity style={{width: 20, height: 20}} onPress={() => Logout()}>
                         <Text>Logout</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <ContainerSearch>
                 <InputSearch
                     onChangeText={(txt) => setPesquisa(txt)}

@@ -63,13 +63,30 @@ export const CardTextContainer = styled.SafeAreaView`
   flex-direction: column;
   padding-right: 12px;
   width: 50%;
-  height: 80px;
-  align-self: center;
+  height: 90px;
+  /* align-self: center; */
   justify-content: center;
   margin-left: 0px;
-  margin-bottom: 20;
+  /* margin-bottom: 20px; */
   gap: 3px;
+  /* border-width: 2px; */
+  /* align-items: center; */
 `;
+export const CardTextContainerStatus = styled.SafeAreaView`
+  flex-direction: column;
+  padding-right: 12px;
+  width: 50%;
+  height: 90px;
+  /* align-self: center; */
+  justify-content: center;
+  margin-left: 0px;
+  margin-right: 135px;
+  gap: 3px;
+  /* border-width: 2px; */
+  /* align-items: start; */
+`;
+
+
 
 export const FlatContainer = styled.FlatList`
   width: 100%;

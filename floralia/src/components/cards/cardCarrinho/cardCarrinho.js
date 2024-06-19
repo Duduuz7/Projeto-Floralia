@@ -22,10 +22,7 @@ export const CardCarrinho = ({
 
     return (
         <CardContainer borderColor={'#1C4B00'}
-            onPress={() => {
-                setShowModalAppo(true)
-
-            }}>
+            >
             <BoxCard>
                 <View style={{borderRightWidth: 2, borderColor: '#1C4B00'}}>
                     <CardImage
